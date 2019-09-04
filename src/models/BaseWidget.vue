@@ -1,7 +1,6 @@
 
 <script>
 
-import axios from 'axios';
 import gql from 'graphql-tag'
 
 import viewIcon from '@/assets/viewIcon.svg';
@@ -50,14 +49,7 @@ export default {
       views: "",
       downloads: "",
       citations: "",
-      // aggregations: "query_aggregations,metrics_aggregations",
-      // sourceId: "datacite-related,datacite-usage,datacite-crossref,crossref",
-      // crossref: "",
-      // datacite: "",
       counts: {},
-      // relationTypeId: [],
-      // metrics: [],
-      // viewsDistribution: []
     }
   },
   computed: {
@@ -95,7 +87,7 @@ export default {
       variables() {
         return {doi: this.doi}
       },
-      result ({ data, loading, networkStatus }) {
+      result ({ data }) {
         if(this.isLocal() == true){
           this.grabMetrics(this.dataInput);
         }else{
@@ -117,54 +109,12 @@ export default {
       }
       return true
     },
-    // getMetrics: function(){
-    //   if(this.dataInput == null && typeof this.doi != "undefined"){
-    //     // this.grabMetrics(this.graphQlReponse);
-    //   }else{
-    //     this.grabMetrics(this.dataInput);
-    //   }
-    // },
     grabMetrics: function(data){
       this.views = data.views || ""
       this.downloads = data.downloads || ""
       this.citations = data.citations || ""
       this.crossref = data.crossref || ""
       this.datacite = data.datacite || ""
-    // },
-    // requestMetrics: function(){
-    //   axios
-    //     .get(this.url,
-    //       {
-    //       params: {
-    //         sourceId: this.sourceId,
-    //         relationTypeId: this.relationTypeId,
-    //         aggregations: this.aggregations,
-    //         doi: this.doi,
-    //         extra: true,
-    //         'page[size]': 0,
-    //         agent: "datacite-widget"
-    //       },
-    //       headers: {'Accept': 'application/vnd.api+json; version=2'}
-    //     } )
-    //     .then(response => {
-    //       this.metrics = response.data.meta
-    //       this.reduceMetrics()
-    //     })
-    //     .catch(error => {
-    //       // eslint-disable-next-line
-    //       console.log(error)
-    //       this.errored = true
-    //     })
-    //     .finally(() => this.loading = false)
-    // },
-    // reduceMetrics: function(){
-    //   this.views = this.metrics.viewsHistogram.count
-    //   this.downloads = this.metrics.downloadsHistogram.count
-    //   // eslint-disable-next-line
-    //   console.log(this.metrics)
-    //   this.viewsDistribution = this.metrics.relationTypes[0].yearMonths
-    //   this.citations = this.metrics.doisCitations.count
-    //   // this.citations = this.metrics.uniqueCitations.citations
     }
   // },
   // watch: {
