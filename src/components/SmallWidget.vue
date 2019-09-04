@@ -36,7 +36,8 @@ export default {
   }
 
   .small-badge {
-  width: 100px;  
+  width: 50px;  
+   height: 60px;
   vertical-align: middle;
 
   /* display:table-cell; */
