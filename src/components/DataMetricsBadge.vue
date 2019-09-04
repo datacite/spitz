@@ -1,5 +1,6 @@
 <template>
 <div>
+      <div v-if="doi">
       <div v-if="display == 'small'">
         <SmallWidget v-bind:doi="doi" v-bind:display="display" v-bind:data-input="dataObject"/>
       </div>
@@ -9,6 +10,8 @@
       <div v-if="display == 'datacite'">
         <DataCiteWidget v-bind:doi="doi" v-bind:display="display" v-bind:data-input="dataObject"/>
       </div>
+        </div> 
+    <a v-else>There is no DOI</a>
     </div>
 </template>
 

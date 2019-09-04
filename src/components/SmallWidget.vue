@@ -1,6 +1,5 @@
 <template>
   <div v-bind:title=tooltip>
-     <!-- <img src="../assets/small_widget.png" v-bind:alt="this.alt">  -->
      <smallBadge class="small-badge" v-bind:alt="this.alt" />  
       <a v-if="views > 0"  v-bind:href="link+'#views-tab'">
         {{views}} Views
@@ -16,7 +15,7 @@
 
 <script>
 
-import BaseWidget from './BaseWidget.vue'
+import BaseWidget from '@/models/BaseWidget.vue'
 
 export default {
   name: 'SmallWidget',
@@ -37,7 +36,8 @@ export default {
   }
 
   .small-badge {
-  width: 100px;  
+  width: 50px;  
+   height: 60px;
   vertical-align: middle;
 
   /* display:table-cell; */

@@ -1,7 +1,8 @@
 
 <script>
 
-import axios from 'axios';
+import gql from 'graphql-tag'
+
 import viewIcon from '@/assets/viewIcon.svg';
 import downloadIcon from '@/assets/downloadIcon.svg';
 import citationIcon from '@/assets/citationIcon.svg';
@@ -48,13 +49,7 @@ export default {
       views: "",
       downloads: "",
       citations: "",
-      aggregations: "query_aggregations,metrics_aggregations",
-      sourceId: "datacite-related,datacite-usage,datacite-crossref,crossref",
-      crossref: "",
-      datacite: "",
-      relationTypeId: [],
-      metrics: [],
-      viewsDistribution: []
+      counts: {},
     }
   },
   computed: {
@@ -77,62 +72,56 @@ export default {
       return  message
     }
   },
-  methods:{
-    getMetrics: function(){
-      if(this.dataInput == null && typeof this.doi != "undefined"){
-        this.requestMetrics()
-      }else{
-        this.grabMetrics();
-      }
-    },
-    grabMetrics: function(){
-      this.views = this.dataInput.views || ""
-      this.downloads = this.dataInput.downloads || ""
-      this.citations = this.dataInput.citations || ""
-      this.crossref = this.dataInput.crossref || ""
-      this.datacite = this.dataInput.datacite || ""
-    },
-    requestMetrics: function(){
-      axios
-        .get(this.url,
-          {
-          params: {
-            sourceId: this.sourceId,
-            relationTypeId: this.relationTypeId,
-            aggregations: this.aggregations,
-            doi: this.doi,
-            extra: true,
-            'page[size]': 0,
-            agent: "datacite-widget"
-          },
-          headers: {'Accept': 'application/vnd.api+json; version=2'}
-        } )
-        .then(response => {
-          this.metrics = response.data.meta
-          this.reduceMetrics()
-        })
-        .catch(error => {
-          // eslint-disable-next-line
-          console.log(error)
-          this.errored = true
-        })
-        .finally(() => this.loading = false)
-    },
-    reduceMetrics: function(){
-      this.views = this.metrics.viewsHistogram.count
-      this.downloads = this.metrics.downloadsHistogram.count
-      // eslint-disable-next-line
-      console.log(this.metrics)
-      this.viewsDistribution = this.metrics.relationTypes[0].yearMonths
-      this.citations = this.metrics.doisCitations.count
-      // this.citations = this.metrics.uniqueCitations.citations
+  apollo: {
+    counts: { 
+      query: gql` query CountsQuery($doi: ID!) 
+        {
+            counts: dataset(id: $doi) {
+              id
+              views: viewCount
+              downloads: downloadCount
+              citations: citationCount
+            } 
+        }
+      `,
+      variables() {
+        return {doi: this.doi}
+      },
+      result ({ data }) {
+        if(this.isLocal() == true){
+          this.grabMetrics(this.dataInput);
+        }else{
+          this.grabMetrics(data.counts) 
+        }  
+      },
+      // Error handling
+      error (error) {
+        // eslint-disable-next-line
+        console.error('We\'ve got an error!', error)
+      },
+      // update: data => data.dataset
     }
   },
-  watch: {
-    getEvents: {
-      handler: 'getMetrics',
-      immediate: true
+  methods:{
+    isLocal: function(){
+      if(this.dataInput == null && typeof this.doi != "undefined"){
+        return false
+      }
+      return true
+    },
+    grabMetrics: function(data){
+      this.views = data.views || ""
+      this.downloads = data.downloads || ""
+      this.citations = data.citations || ""
+      this.crossref = data.crossref || ""
+      this.datacite = data.datacite || ""
     }
+  // },
+  // watch: {
+  //   getEvents: {
+  //     handler: 'getMetrics',
+  //     // immediate: true
+  //   }
   }
 }
 </script>

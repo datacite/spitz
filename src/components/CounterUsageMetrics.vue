@@ -21,7 +21,7 @@
 <script>
 
 import ChartTimeDistribution from './ChartTimeDistribution.vue'
-import BaseWidget from './BaseWidget.vue'
+import BaseWidget from '@/models/BaseWidget.vue'
 
 export default {
   name: 'CounterUsageMetrics',
