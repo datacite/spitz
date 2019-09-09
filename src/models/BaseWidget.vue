@@ -8,7 +8,20 @@ import downloadIcon from '@/assets/downloadIcon.svg';
 import citationIcon from '@/assets/citationIcon.svg';
 import smallBadge from '@/assets/smallBadge.svg';
 import mediumBadge from '@/assets/mediumBadge.svg';
+import ApolloClient from 'apollo-boost'
 
+const apolloClient = new ApolloClient({
+  // You should use an absolute URL here
+  uri: 'https://api.datacite.org/graphql'
+})
+
+import VueApollo from 'vue-apollo'
+
+// Vue.use(VueApollo)
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
 
 export default {
   name: 'BaseWidget',
