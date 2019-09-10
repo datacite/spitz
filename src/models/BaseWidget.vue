@@ -47,14 +47,7 @@ export default {
     return{
       views: "",
       downloads: "",
-      citations: "",
-      aggregations: "query_aggregations,metrics_aggregations",
-      sourceId: "datacite-related,datacite-usage,datacite-crossref,crossref",
-      crossref: "",
-      datacite: "",
-      relationTypeId: [],
-      metrics: [],
-      viewsDistribution: []
+      citations: ""
     }
   },
   computed: {
@@ -62,7 +55,7 @@ export default {
       return "https://search.datacite.org/works/"+this.doi
     },
     url(){
-      return "https://api.datacite.org/events"
+      return "https://api.datacite.org/graphql"
     },
     dataInputApi(){
       return this.viewsDistribution
@@ -78,38 +71,47 @@ export default {
     }
   },
   methods:{
-    getMetrics: function(){
-      if(this.dataInput == null && typeof this.doi != "undefined"){
+    getMetrics: function(){ 
+      if(this.isLocal() == false){
         this.requestMetrics()
       }else{
-        this.grabMetrics();
+        this.grabMetrics(this.dataInput);
       }
     },
-    grabMetrics: function(){
-      this.views = this.dataInput.views || ""
-      this.downloads = this.dataInput.downloads || ""
-      this.citations = this.dataInput.citations || ""
-      this.crossref = this.dataInput.crossref || ""
-      this.datacite = this.dataInput.datacite || ""
+    isLocal: function(){
+      if(this.dataInput == null && typeof this.doi != "undefined"){
+        return false
+      }
+      return true
+    },
+    grabMetrics: function(data){
+      this.views = data.views || ""
+      this.downloads = data.downloads || ""
+      this.citations = data.citations || ""
+      this.crossref = data.crossref || ""
+      this.datacite = data.datacite || ""
     },
     requestMetrics: function(){
-      axios
-        .get(this.url,
-          {
-          params: {
-            sourceId: this.sourceId,
-            relationTypeId: this.relationTypeId,
-            aggregations: this.aggregations,
-            doi: this.doi,
-            extra: true,
-            'page[size]': 0,
-            agent: "datacite-widget"
-          },
-          headers: {'Accept': 'application/vnd.api+json; version=2'}
+      axios({
+          url: this.url,
+          method: 'post',
+          data: {
+            query: `
+              {
+                counts: dataset(id: "${this.doi}") {
+                    id
+                    views: viewCount
+                    downloads: downloadCount
+                    citations: citationCount
+                  } 
+              }
+              `
+          }
         } )
-        .then(response => {
-          this.metrics = response.data.meta
-          this.reduceMetrics()
+        .then((response) => {
+               // eslint-disable-next-line
+          // console.log(response)
+          this.grabMetrics(response.data.data.counts);
         })
         .catch(error => {
           // eslint-disable-next-line
@@ -117,15 +119,6 @@ export default {
           this.errored = true
         })
         .finally(() => this.loading = false)
-    },
-    reduceMetrics: function(){
-      this.views = this.metrics.viewsHistogram.count
-      this.downloads = this.metrics.downloadsHistogram.count
-      // eslint-disable-next-line
-      console.log(this.metrics)
-      this.viewsDistribution = this.metrics.relationTypes[0].yearMonths
-      this.citations = this.metrics.doisCitations.count
-      // this.citations = this.metrics.uniqueCitations.citations
     }
   },
   watch: {
