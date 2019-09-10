@@ -61,8 +61,7 @@ export default {
     return{
       views: "",
       downloads: "",
-      citations: "",
-      counts: {},
+      citations: ""
     }
   },
   computed: {
@@ -70,7 +69,7 @@ export default {
       return "https://search.datacite.org/works/"+this.doi
     },
     url(){
-      return "https://api.datacite.org/events"
+      return "https://api.datacite.org/graphql"
     },
     dataInputApi(){
       return this.viewsDistribution
@@ -116,6 +115,14 @@ export default {
     }
   },
   methods:{
+    getMetrics: function(){ 
+      if(this.isLocal() == false){
+        this.requestMetrics()
+      }else{
+        this.grabMetrics(this.dataInput);
+      }
+      return true
+    },
     isLocal: function(){
       if(this.dataInput == null && typeof this.doi != "undefined"){
         return false
@@ -128,6 +135,41 @@ export default {
       this.citations = data.citations || ""
       this.crossref = data.crossref || ""
       this.datacite = data.datacite || ""
+    },
+    requestMetrics: function(){
+      axios({
+          url: this.url,
+          method: 'post',
+          data: {
+            query: `
+              {
+                counts: dataset(id: "${this.doi}") {
+                    id
+                    views: viewCount
+                    downloads: downloadCount
+                    citations: citationCount
+                  } 
+              }
+              `
+          }
+        } )
+        .then((response) => {
+               // eslint-disable-next-line
+          // console.log(response)
+          this.grabMetrics(response.data.data.counts);
+        })
+        .catch(error => {
+          // eslint-disable-next-line
+          console.log(error)
+          this.errored = true
+        })
+        .finally(() => this.loading = false)
+    }
+  },
+  watch: {
+    getEvents: {
+      handler: 'getMetrics',
+      immediate: true
     }
   // },
   // watch: {
