@@ -1,27 +1,14 @@
 
 <script>
 
-import gql from 'graphql-tag'
+import axios from 'axios';
 
 import viewIcon from '@/assets/viewIcon.svg';
 import downloadIcon from '@/assets/downloadIcon.svg';
 import citationIcon from '@/assets/citationIcon.svg';
 import smallBadge from '@/assets/smallBadge.svg';
 import mediumBadge from '@/assets/mediumBadge.svg';
-import ApolloClient from 'apollo-boost'
 
-const apolloClient = new ApolloClient({
-  // You should use an absolute URL here
-  uri: 'https://api.datacite.org/graphql'
-})
-
-import VueApollo from 'vue-apollo'
-
-// Vue.use(VueApollo)
-
-const apolloProvider = new VueApollo({
-  defaultClient: apolloClient,
-})
 
 export default {
   name: 'BaseWidget',
@@ -84,36 +71,6 @@ export default {
       return  message
     }
   },
-  apollo: {
-    counts: { 
-      query: gql` query CountsQuery($doi: ID!) 
-        {
-            counts: dataset(id: $doi) {
-              id
-              views: viewCount
-              downloads: downloadCount
-              citations: citationCount
-            } 
-        }
-      `,
-      variables() {
-        return {doi: this.doi}
-      },
-      result ({ data }) {
-        if(this.isLocal() == true){
-          this.grabMetrics(this.dataInput);
-        }else{
-          this.grabMetrics(data.counts) 
-        }  
-      },
-      // Error handling
-      error (error) {
-        // eslint-disable-next-line
-        console.error('We\'ve got an error!', error)
-      },
-      // update: data => data.dataset
-    }
-  },
   methods:{
     getMetrics: function(){ 
       if(this.isLocal() == false){
@@ -171,12 +128,6 @@ export default {
       handler: 'getMetrics',
       immediate: true
     }
-  // },
-  // watch: {
-  //   getEvents: {
-  //     handler: 'getMetrics',
-  //     // immediate: true
-  //   }
   }
 }
 </script>
