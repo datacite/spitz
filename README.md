@@ -38,6 +38,9 @@ Getting set up with a Data Metrics Badge is a straightforward process – just a
 
 ```
 
+
+There is also a [live demo](https://support.datacite.org/docs/displaying-usage-and-citations-in-your-repository).
+
 ## Project setup
 ```
 yarn install
