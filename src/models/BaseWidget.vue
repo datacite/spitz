@@ -11,6 +11,7 @@ import downloadIcon from '@/assets/downloadIcon.svg';
 import citationIcon from '@/assets/citationIcon.svg';
 import smallBadge from '@/assets/smallBadge.svg';
 import mediumBadge from '@/assets/mediumBadge.svg';
+import infoCircleIcon from '@/assets/infoCircleIcon.svg';
 
 
 export default {
@@ -20,6 +21,7 @@ export default {
     downloadIcon,
     smallBadge,
     mediumBadge,
+    infoCircleIcon,
     citationIcon
   },
   props: {
