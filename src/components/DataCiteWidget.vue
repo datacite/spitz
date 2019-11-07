@@ -12,6 +12,10 @@
         <citationIcon class="icon-metrics" />  
         {{citations}} Citations
       </a>
+      <a v-if="downloads+views == 0"  class="usage-counts usage-views">
+        <infoCircleIcon class="icon-metrics" />  
+        This data repository is not currently reporting usage information.
+      </a>
   </div>
 </template>
 
