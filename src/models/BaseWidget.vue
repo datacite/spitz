@@ -3,6 +3,9 @@
 
 import axios from 'axios';
 
+import { APIURL } from '@/models/constants.js'
+
+
 import viewIcon from '@/assets/viewIcon.svg';
 import downloadIcon from '@/assets/downloadIcon.svg';
 import citationIcon from '@/assets/citationIcon.svg';
@@ -56,7 +59,7 @@ export default {
       return "https://search.datacite.org/works/"+this.doi
     },
     url(){
-      return "https://api.datacite.org/graphql"
+      return APIURL + "/graphql"
     },
     dataInputApi(){
       return this.viewsDistribution
