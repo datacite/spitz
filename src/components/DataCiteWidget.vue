@@ -12,9 +12,9 @@
         <citationIcon class="icon-metrics" />  
         {{citations}} Citations
       </a>
-      <a v-if="downloads+views == 0"  class="usage-counts usage-views">
+      <a v-if="downloads+views == 0 || citations == 0"  class="usage-counts usage-views">
         <infoCircleIcon class="icon-metrics" />  
-        This data repository is not currently reporting usage information.
+        {{infoMessage}}
       </a>
   </div>
 </template>
@@ -27,6 +27,19 @@ export default {
   name: 'DataCiteWidget',
   extends: BaseWidget,
   components:{
+  },
+  computed:{
+    infoMessage(){
+      let message = ""
+      if(this.views+this.downloads == 0){
+        message = "No usage information was reported."
+      } 
+      if (this.citations == 0) {
+        message = message + " No citations were reported." 
+      }
+      
+      return message
+    }
   }
 }
 </script>
