@@ -1,6 +1,6 @@
 {
   "name": "data-metrics-badge",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": false,
   "author": "Kristian Garza <kj.garza@gmail.com> (https://github.com/kjgarza)",
   "scripts": {
