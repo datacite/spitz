@@ -14,7 +14,7 @@ before_script:
 - yarn add @vue/cli-plugin-unit-mocha
 script:
 - yarn test:unit tests
-before_deploy: vue build --target wc --name data-metrics-badge 'src/components/DataMetricsBadge.vue'
+before_deploy: yarn build --target wc --name data-metrics-badge 'src/components/DataMetricsBadge.vue'
 deploy:
   provider: npm
   email: kgarza@datacite.org
