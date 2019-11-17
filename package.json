@@ -31,6 +31,7 @@
     "babel-eslint": "^10.0.1",
     "chai": "^4.1.2",
     "eslint": "^5.16.0",
+    "eslint-utils": "^1.4.3",
     "eslint-plugin-vue": "^5.0.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
