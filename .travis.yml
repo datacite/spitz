@@ -1,16 +1,14 @@
 language: node_js
 node_js:
 - "10"
-env:
-- WEBPACK_VERSION=4 MOCHA_VERSION=4
-- WEBPACK_VERSION=4 MOCHA_VERSION=5
+
 cache: npm
 install:
 - npm install -g @vue/cli
 - npm install -g @vue/cli-service-global
 before_script:
-- npm install webpack@$WEBPACK_VERSION
-- npm install mocha@$MOCHA_VERSION
+- npm install webpack
+- npm install mocha
 - yarn add @vue/cli-plugin-unit-mocha
 script:
 - yarn test:unit tests
