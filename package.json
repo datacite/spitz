@@ -17,7 +17,7 @@
   "dependencies": {
     "@babel/core": "^7.0.0-0",
     "axios": "^0.19.0",
-    "core-js": "^3.4.1",
+    "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-vega": "^1.0.0-alpha.13"
@@ -31,7 +31,6 @@
     "babel-eslint": "^10.0.1",
     "chai": "^4.1.2",
     "eslint": "^5.16.0",
-    "eslint-utils": "^1.4.3",
     "eslint-plugin-vue": "^5.0.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
