@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 12.8.1
+- "10"
 env:
 - WEBPACK_VERSION=4 MOCHA_VERSION=4
 - WEBPACK_VERSION=4 MOCHA_VERSION=5
