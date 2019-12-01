@@ -1,10 +1,7 @@
-
 <script>
-
 import axios from 'axios';
 
-import { APIURL } from '@/models/constants.js'
-
+import { APIURL } from '@/models/constants.js';
 
 import viewIcon from '@/assets/viewIcon.svg';
 import downloadIcon from '@/assets/downloadIcon.svg';
@@ -13,97 +10,110 @@ import smallBadge from '@/assets/smallBadge.svg';
 import mediumBadge from '@/assets/mediumBadge.svg';
 import infoCircleIcon from '@/assets/infoCircleIcon.svg';
 
-
 export default {
   name: 'BaseWidget',
-  components:{
+  components: {
     viewIcon,
     downloadIcon,
     smallBadge,
     mediumBadge,
     infoCircleIcon,
-    citationIcon
+    citationIcon,
   },
   props: {
+    // eslint-disable-next-line vue/require-default-prop
     dataInput: {
       type: Object,
       required: false,
-      validator: function (value) {
-        let keys = Object.keys(value)
-        return ["citations","views","downloads"].some(r=>keys.includes(r))
-      }
+      validator(value) {
+        const keys = Object.keys(value);
+        return ['citations', 'views', 'downloads'].some((r) => keys.includes(r));
+      },
     },
     doi: {
       type: String,
       required: true,
-      validator: function (value) {
-        return value.match(/^10\.\d{4,5}\/[-._;()/:a-zA-Z0-9*~$=]+/)
-      }
+      validator(value) {
+        return value.match(/^10\.\d{4,5}\/[-._;()/:a-zA-Z0-9*~$=]+/);
+      },
     },
     display: {
       type: String,
       required: false,
-      validator: function (value) {
-        return ["small","medium","datacite"].indexOf(value) > -1
+      validator(value) {
+        return ['small', 'medium', 'datacite'].indexOf(value) > -1;
       },
-      default: "small"
-    }
+      default: 'small',
+    },
   },
-  data: function(){
-    return{
-      views: "",
-      downloads: "",
-      citations: ""
-    }
+  data() {
+    return {
+      views: '',
+      downloads: '',
+      citations: '',
+    };
   },
   computed: {
-    link(){
-      return "https://search.datacite.org/works/"+this.doi
+    link() {
+      return `https://search.datacite.org/works/${this.doi}`;
     },
-    url(){
-      return APIURL + "/graphql"
+    url() {
+      return `${APIURL}/graphql`;
     },
-    dataInputApi(){
-      return this.viewsDistribution
+    dataInputApi() {
+      return this.viewsDistribution;
     },
-    alt(){
-      return Number(this.views) + " Views " + Number(this.downloads) + " Downloads " +  Number(this.citations) + " Citations from DataCite"
+    alt() {
+      return (
+        `${Number(this.views)
+        } Views ${
+          Number(this.downloads)
+        } Downloads ${
+          Number(this.citations)
+        } Citations from DataCite`
+      );
     },
-    tooltip(){
-      let message = ""
-      message += this.datacite ? this.datacite + " from DataCite " : ""  
-      message += this.crossref ? this.crossref + " from Crossref" : ""  
-      return  message
-    }
+    tooltip() {
+      let message = '';
+      message += this.datacite ? `${this.datacite} from DataCite ` : '';
+      message += this.crossref ? `${this.crossref} from Crossref` : '';
+      return message;
+    },
   },
-  methods:{
-    getMetrics: function(){ 
-      if(this.isLocal() == false){
-        this.requestMetrics()
-      }else{
+  watch: {
+    getEvents: {
+      handler: 'getMetrics',
+      immediate: true,
+    },
+  },
+  methods: {
+    getMetrics() {
+      if (this.isLocal() == false) {
+        this.requestMetrics();
+      } else {
         this.grabMetrics(this.dataInput);
       }
-      return true
+      return true;
     },
-    isLocal: function(){
-      if(this.dataInput == null && typeof this.doi != "undefined"){
-        return false
+    isLocal() {
+      if (this.dataInput == null && typeof this.doi !== 'undefined') {
+        return false;
       }
-      return true
+      return true;
     },
-    grabMetrics: function(data){
-      this.views = data.views || ""
-      this.downloads = data.downloads || ""
-      this.citations = data.citations || ""
-      this.crossref = data.crossref || ""
-      this.datacite = data.datacite || ""
+    grabMetrics(data) {
+      this.views = data.views || '';
+      this.downloads = data.downloads || '';
+      this.citations = data.citations || '';
+      this.crossref = data.crossref || '';
+      this.datacite = data.datacite || '';
     },
-    requestMetrics: function(){
+    requestMetrics() {
       axios({
-          url: this.url,
-          method: 'post',
-          data: {
-            query: `
+        url: this.url,
+        method: 'post',
+        data: {
+          query: `
               {
                 counts: dataset(id: "${this.doi}") {
                     id
@@ -112,29 +122,24 @@ export default {
                     citations: citationCount
                   } 
               }
-              `
-          }
-        } )
+              `,
+        },
+      })
         .then((response) => {
-               // eslint-disable-next-line
+          // eslint-disable-next-line
           // console.log(response)
           this.grabMetrics(response.data.data.counts);
         })
-        .catch(error => {
+        .catch((error) => {
           // eslint-disable-next-line
-          console.log(error)
-          this.errored = true
+          console.log(error);
+          this.errored = true;
         })
-        .finally(() => this.loading = false)
-    }
+        // eslint-disable-next-line no-return-assign
+        .finally(() => (this.loading = false));
+    },
   },
-  watch: {
-    getEvents: {
-      handler: 'getMetrics',
-      immediate: true
-    }
-  }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -144,17 +149,36 @@ export default {
   width: 17px;
   height: 17px;
   /* margin-right: 3px; */
-  
-  display:inline-block;
+
+  display: inline-block;
 }
 
-
-
-
-a{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;font-family:'Cairo', "Helvetica", Arial, sans-serif;vertical-align:top;}
-a{color:#222222;-webkit-transition:all 150ms linear;-moz-transition:all 150ms linear;-o-transition:all 150ms linear;-ms-transition:all 150ms linear;transition:all 150ms linear;text-decoration:none;}
-a:hover,a:focus{color:#222222;text-decoration:none;}
-a:focus,a:active{outline:0;}
-a,a:visited{text-decoration:none;}
-
+a {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Cairo", "Helvetica", Arial, sans-serif;
+  vertical-align: top;
+}
+a {
+  color: #222222;
+  -webkit-transition: all 150ms linear;
+  -moz-transition: all 150ms linear;
+  -o-transition: all 150ms linear;
+  -ms-transition: all 150ms linear;
+  transition: all 150ms linear;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #222222;
+  text-decoration: none;
+}
+a:focus,
+a:active {
+  outline: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
 </style>
