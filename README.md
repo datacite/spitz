@@ -6,11 +6,11 @@
 
 # Data Metrics Badge
 
-The *Data Metrics Badge*  provides a open and easy way to display the number of citations and usage that your research datasets and resources have received. 
+The *Data Metrics Badge* provides an open and easy way to display the number of citations and usage that your research datasets and resources have received. 
 
-The Data Metrics Badge was created as part of the [PARSEC](http://www.belmontforum.org/projects/4057/), Building New Tools for Data Sharing and Reuse through a Transnational Investigation of the Socioeconomic Impacts of Protected Areas. 
+The *Data Metrics Badge* was created as part of the [PARSEC](http://www.belmontforum.org/projects/4057/), Building New Tools for Data Sharing and Reuse through a Transnational Investigation of the Socioeconomic Impacts of Protected Areas. 
 
-The *Data Metrics Badge* is a an easy way to embed, on your repository landingpage, usage and citations metrics from DataCite Services. Usage statistics are processed accoriding to the [Code of Practice for Research Data](https://www.projectcounter.org/code-practice-research-data/). Citations stats are collected via the [DataCite and Crossref EventData Serice](https://blog.datacite.org/are-your-data-being-used-event-data-has-the-answer/). 
+The *Data Metrics Badge* is a an easy way to embed usage and citations metrics from DataCite Services on your repository landing page. Usage statistics are processed according to the [Code of Practice for Research Data](https://www.projectcounter.org/code-practice-research-data/). Citation statistics are collected via the [DataCite and Crossref EventData Service](https://blog.datacite.org/are-your-data-being-used-event-data-has-the-answer/). 
 
 
 ## Browsers support
@@ -22,7 +22,7 @@ The *Data Metrics Badge* is a an easy way to embed, on your repository landingpa
 
 ## Installation and Usage
 
-Getting set up with a Data Metrics Badge is a straightforward process – just add the following code to the HTML of your website, wherever you want the Data Metrics Badge to appear:
+Getting set up with a Data Metrics Badge is a straightforward process – just add the following code to the HTML of your website wherever you want the Data Metrics Badge to appear:
 
 
 ```html
