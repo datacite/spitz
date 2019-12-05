@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     link() {
-      return `https://search.datacite.org/works/${this.doi }#views-tab`;
+      return `https://search.datacite.org/works/${this.doi}#views-tab`;
     },
     spec() {
       return {

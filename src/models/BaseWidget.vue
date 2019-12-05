@@ -88,7 +88,7 @@ export default {
   },
   methods: {
     getMetrics() {
-      if (this.isLocal() == false) {
+      if (this.isLocal() === false) {
         this.requestMetrics();
       } else {
         this.grabMetrics(this.dataInput);
