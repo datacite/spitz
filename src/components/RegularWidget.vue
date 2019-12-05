@@ -4,18 +4,15 @@
       <div class="col-4">
         <div class="row">
           <div class="col-2 ">
-            <v-badge
-              dark
-              class="align-self-center"
-            >
-              <template v-slot:badge>
+            <v-badge dark class="align-self-center">
+              <template v-slot:badge v-if="(citations !== '')">
                 {{ formatNumbers(citations) }}
               </template>
               <!-- <v-icon>
                 mdi-format-quote-close
               </v-icon> -->
               <a :href="link + '#citations-tab'">
-                <citationIcon class="icon-metrics" />
+                <citationIcon :class="(citations !== '') ? activeClass : inactiveClass" />
               </a>
             </v-badge>
           </div>
@@ -24,18 +21,15 @@
       <div class="col-4">
         <div class="row">
           <div class="col-2">
-            <v-badge
-              dark
-              class="align-self-center"
-            >
-              <template v-slot:badge>
+            <v-badge dark class="align-self-center">
+              <template v-slot:badge v-if="(views !== '')">
                 {{ formatNumbers(views) }}
               </template>
               <!-- <v-icon>
                 mdi-eye-outline
               </v-icon> -->
               <a :href="link + '#citations-tab'">
-                <viewIcon class="icon-metrics" />
+                <viewIcon :class="(views !== '') ? activeClass : inactiveClass" />
               </a>
             </v-badge>
           </div>
@@ -44,18 +38,15 @@
       <div class="col-4">
         <div class="row">
           <div class="col-2">
-            <v-badge
-              dark
-              class="align-self-center"
-            >
-              <template v-slot:badge>
+            <v-badge dark class="align-self-center">
+              <template v-slot:badge v-if="(downloads !== '')">
                 {{ formatNumbers(downloads) }}
               </template>
               <!-- <v-icon>
                 mdi-download
               </v-icon> -->
               <a :href="link + '#downloads-tab'">
-                <downloadIcon class="icon-metrics" />
+                <downloadIcon :class="(downloads !== '') ? activeClass : inactiveClass" />
               </a>
             </v-badge>
           </div>
@@ -75,17 +66,30 @@ export default {
     'v-badge': VBadge,
   },
   extends: BaseWidget,
-  methods: {
+  data() {
+    return {
+      activeClass: 'icon-metrics',
+      inactiveClass: 'icon-metrics-empty',
+    };
   },
+  // computed: {
+  //   hasCounts(){
+  //     return
+  //   }
+  // },
+  // methods: {
+  //   hasCounts(num) {
+  //     // eslint-disable-next-line
+  //     console.log(typeof(num));
+  //     // eslint-disable-next-line valid-typeof
+  //     return typeof (num) === String
+  //       ? '.icon-metrics' : '.icon-metrics-empty';
+  //   },
+  // },
 };
 </script>
 
 <style>
-
-path {
-  stroke: rgba( 0, 89, 173);
-  fill: rgba( 0, 89, 173);
-}
 
 .v-badge__badge {
   align-items: center;
@@ -104,8 +108,8 @@ path {
   position: absolute;
   top: -11px;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-  background-color: rgba( 255, 0, 0) !important;
-  border-color: rgba( 255, 0, 0) !important;
+  background-color: rgba(255, 0, 0) !important;
+  border-color: rgba(255, 0, 0) !important;
 }
 --is-ltr .v-badge__badge {
   right: -22px;
@@ -141,6 +145,20 @@ path {
 }
 
 /*! CSS Used from: Embedded */
-.icon-metrics{width:36px;height:36px;display:inline-block;color: rgba( 0, 89, 173);}
-
+.icon-metrics {
+  width: 46px;
+  height: 46px;
+  display: inline-block;
+  color: rgba(0, 89, 173);
+  stroke: rgba(0, 89, 173);
+  fill: rgba(0, 89, 173);
+}
+.icon-metrics-empty {
+  width: 46px;
+  height: 46px;
+  display: inline-block;
+  color: gray;
+  stroke:gray;
+  fill: gray;
+}
 </style>

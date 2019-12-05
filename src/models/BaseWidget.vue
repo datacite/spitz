@@ -75,6 +75,7 @@ export default {
     },
     tooltip() {
       let message = '';
+      message += `${this.doi} `;
       message += this.datacite ? `${this.datacite} from DataCite ` : '';
       message += this.crossref ? `${this.crossref} from Crossref` : '';
       return message;
