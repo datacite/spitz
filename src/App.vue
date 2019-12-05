@@ -1,39 +1,62 @@
+/* eslint-disable max-len */
 <template>
   <div id="app">
-    <DataMetricsBadge doi="10.7272/q6g15xs4" display="small"/>
-    <br/>
-    <DataMetricsBadge doi="10.7272/q6g15xs4" display="medium"/>
-    <br/>
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="small"
+    />
+    <br>
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="medium"
+    />
+    <br>
 
-    <DataMetricsBadge doi="10.7272/q6g15xs4" display="datacite"/>
-    <br/>
-  <DataMetricsBadge doi="10.7272/q6g15xsd4" display="datacite"/>
-    <br/>
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="datacite"
+    />
+    <br>
+    <DataMetricsBadge
+      doi="10.7272/q6g15xsd4"
+      display="regular"
+    />
+    <br>
 
-    <DataMetricsBadge doi="10.7272/q6g15xs4"/>
+    <DataMetricsBadge doi="10.7272/q6g15xs4" />
 
-    <br/>
+    <br>
 
-    <DataMetricsBadge doi="10.7272/q6g15xs4" display="medium" data-input='{"views": 77, "downloads":8, "citations":244324, "crossref":500}'/>
-    <DataMetricsBadge doi="10.7272/q6g15xs4" display="datacite" data-input='{"views": 0, "downloads":0, "citations":244324, "crossref":500}'/>
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="medium"
+      data-input="{&quot;views&quot;: 77, &quot;downloads&quot;:8, &quot;citations&quot;:244324, &quot;crossref&quot;:500}"
+    />
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="datacite"
+      data-input="{&quot;views&quot;: 0, &quot;downloads&quot;:0, &quot;citations&quot;:244324, &quot;crossref&quot;:500}"
+    />
 
-    <br/>
+    <br>
 
-    <DataMetricsBadge doi="" display="small" data-input='{"views": 77, "downloads":8, "citations":244324, "crossref":500}'/>
-
+    <DataMetricsBadge
+      doi=""
+      display="small"
+      data-input="{&quot;views&quot;: 77, &quot;downloads&quot;:8, &quot;citations&quot;:244324, &quot;crossref&quot;:500}"
+    />
   </div>
 </template>
 
 <script>
-
-import DataMetricsBadge from './components/DataMetricsBadge.vue'
+import DataMetricsBadge from './components/DataMetricsBadge.vue';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    DataMetricsBadge
-  }
-}
+    DataMetricsBadge,
+  },
+};
 </script>
 
 <style>

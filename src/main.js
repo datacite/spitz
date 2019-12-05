@@ -1,27 +1,13 @@
-// import Vue from 'vue'
-import Vue from 'vue/dist/vue.js'
-import App from './App.vue'
-import VueVega from 'vue-vega'
-// import ApolloClient from 'apollo-boost'
+import Vue from 'vue';
+import VueVega from 'vue-vega';
+import App from './App.vue';
 
-// const apolloClient = new ApolloClient({
-//   // You should use an absolute URL here
-//   uri: 'https://api.datacite.org/graphql'
-// })
 
-// import VueApollo from 'vue-apollo'
+Vue.use(VueVega);
 
-// Vue.use(VueApollo)
 
-// const apolloProvider = new VueApollo({
-//   defaultClient: apolloClient,
-// })
-
-Vue.use(VueVega)
-
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
-  // apolloProvider,
-  render: h => h(App),
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount('#app');
