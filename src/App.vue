@@ -1,56 +1,61 @@
+/* eslint-disable max-len */
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+  <div id="app">
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="small"
+    />
+    <br>
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="medium"
+    />
+    <br>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="datacite"
+    />
+    <br>
+    <DataMetricsBadge
+      doi="10.7272/q6g15xsd4"
+      display="regular"
+    />
+    <br>
 
-      <v-spacer></v-spacer>
+    <DataMetricsBadge doi="10.7272/q6g15xs4" />
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+    <br>
 
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="medium"
+      data-input="{&quot;views&quot;: 77, &quot;downloads&quot;:8, &quot;citations&quot;:244324}"
+    />
+    <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="regular"
+      data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:244324}"
+    />
+
+    <br>
+
+    <DataMetricsBadge
+      doi=""
+      display="small"
+      data-input="{&quot;views&quot;: 77, &quot;downloads&quot;:8, &quot;citations&quot;:244324}"
+    />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import DataMetricsBadge from './components/DataMetricsBadge.vue';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    DataMetricsBadge,
   },
 
   data: () => ({
@@ -58,3 +63,15 @@ export default {
   }),
 };
 </script>
+
+
+<style>
+#app {
+  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

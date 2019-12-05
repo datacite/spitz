@@ -22,13 +22,13 @@
           :data-input="dataObject"
         />
       </div>
-      <!-- <div v-if="display == 'regular'">
+      <div v-if="display == 'regular'">
         <RegularWidget
           :doi="doi"
           :display="display"
           :data-input="dataObject"
         />
-      </div> -->
+      </div>
     </div>
     <a v-else>There is no DOI</a>
   </div>
@@ -38,7 +38,7 @@
 import SmallWidget from './SmallWidget.vue';
 import MediumWidget from './MediumWidget.vue';
 import DataCiteWidget from './DataCiteWidget.vue';
-// import RegularWidget from './RegularWidget.vue';
+import RegularWidget from './RegularWidget.vue';
 
 export default {
   name: 'DataMetricsBadge',
@@ -47,7 +47,7 @@ export default {
     MediumWidget,
     SmallWidget,
     DataCiteWidget,
-    // RegularWidget,
+    RegularWidget,
   },
   props: {
     // eslint-disable-next-line vue/require-default-prop

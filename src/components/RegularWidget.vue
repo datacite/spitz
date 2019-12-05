@@ -1,24 +1,69 @@
 <template>
-  <div class="metrics">
-    <v-badge v-if="citations > 0">
-      <template v-slot:badge>
-        {{ citations }}
-      </template>
-      <v-icon>mdi-format-quote-close</v-icon>
-    </v-badge>
-    <v-badge v-if="views > 0">
-      <template v-slot:badge>
-        {{ views }}
-      </template>
-      <v-icon>mdi-eye-outline</v-icon>
-    </v-badge>
-    <v-badge v-if="downloads > 0">
-      <template v-slot:badge>
-        {{ downloads }}
-      </template>
-      <v-icon>mdi-download-outline</v-icon>
-    </v-badge>
-    <!-- :href="link + '#citations-tab'" -->
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-2 ">
+            <v-badge
+              dark
+              class="align-self-center"
+            >
+              <template v-slot:badge>
+                {{ citations }}
+              </template>
+              <v-icon>
+                mdi-eye-outline
+              </v-icon>
+            </v-badge>
+          </div>
+          <div class="col-lg-6 col-10 ml-1">
+            <h4 class="text-left">
+              Citations
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-2">
+            <v-badge
+              dark
+              class="align-self-center"
+            >
+              <template v-slot:badge>
+                {{ views }}
+              </template>
+              <v-icon>
+                mdi-eye-outline
+              </v-icon>
+            </v-badge>
+          </div>
+          <div class="col-lg-6 col-10 ml-1">
+            <h4>Views</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-2">
+            <v-badge
+              dark
+              class="align-self-center"
+            >
+              <template v-slot:badge>
+                {{ downloads }}
+              </template>
+              <v-icon>
+                mdi-eye-outline
+              </v-icon>
+            </v-badge>
+          </div>
+          <div class="col-lg-6 col-10 ml-1">
+            <h4>Downloads</h4>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -36,9 +81,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 /*! CSS Used from: Embedded */
- .primary{background-color:#1867c0!important;border-color:#1867c0!important;}
+.primary{background-color:#1867c0!important;border-color:#1867c0!important;}
 /*! CSS Used from: https://vuetifyjs.com/dist/common.3217c3377db00ba0a84d.css */
 .v-badge__badge{align-items:center;border-radius:11px;color:#FFFFFF;display:inline-flex;flex-direction:row;flex-wrap:wrap;font-size:14px;height:22px;justify-content:center;line-height:normal;min-width:22px;padding:0 4px;position:absolute;top:-11px;transition:0.3s cubic-bezier(0.25, 0.8, 0.5, 1);}
 --is-ltr .v-badge__badge{right:-22px;}
