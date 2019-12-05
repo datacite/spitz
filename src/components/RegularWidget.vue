@@ -4,13 +4,17 @@
       <div class="col-4">
         <div class="row">
           <div class="col-2 ">
-            <v-badge dark class="align-self-center">
+            <v-badge
+              dark
+              class="align-self-center"
+            >
               <template v-slot:badge>
-                {{ citations }}
+                {{ formatNumbers(citations) }}
               </template>
-              <v-icon>
+              <!-- <v-icon>
                 mdi-format-quote-close
-              </v-icon>
+              </v-icon> -->
+              <citationIcon class="icon-metrics" />
             </v-badge>
           </div>
         </div>
@@ -18,13 +22,17 @@
       <div class="col-4">
         <div class="row">
           <div class="col-2">
-            <v-badge dark class="align-self-center">
+            <v-badge
+              dark
+              class="align-self-center"
+            >
               <template v-slot:badge>
-                {{ views }}
+                {{ formatNumbers(views) }}
               </template>
-              <v-icon>
+              <!-- <v-icon>
                 mdi-eye-outline
-              </v-icon>
+              </v-icon> -->
+              <viewIcon class="icon-metrics" />
             </v-badge>
           </div>
         </div>
@@ -32,13 +40,17 @@
       <div class="col-4">
         <div class="row">
           <div class="col-2">
-            <v-badge dark class="align-self-center">
+            <v-badge
+              dark
+              class="align-self-center"
+            >
               <template v-slot:badge>
-                {{ downloads }}
+                {{ formatNumbers(downloads) }}
               </template>
-              <v-icon>
+              <!-- <v-icon>
                 mdi-download
-              </v-icon>
+              </v-icon> -->
+              <downloadIcon class="icon-metrics" />
             </v-badge>
           </div>
         </div>
@@ -48,16 +60,25 @@
 </template>
 
 <script>
-import { VBadge, VIcon } from "vuetify/lib";
-import BaseWidget from "@/models/BaseWidget.vue";
+import { VBadge, VIcon } from 'vuetify/lib';
+import BaseWidget from '@/models/BaseWidget.vue';
 
 export default {
-  name: "RegularWidget",
+  name: 'RegularWidget',
   components: {
-    "v-badge": VBadge,
-    "v-icon": VIcon
+    'v-badge': VBadge,
+    'v-icon': VIcon,
   },
-  extends: BaseWidget
+  extends: BaseWidget,
+  methods: {
+    formatNumbers(num) {
+      if (num < 1e3) return num;
+      if (num >= 1e3 && num < 1e6) return `${+(num / 1e3).toFixed(1)}K`;
+      if (num >= 1e6 && num < 1e9) return `${+(num / 1e6).toFixed(1)}M`;
+      if (num >= 1e9 && num < 1e12) return `${+(num / 1e9).toFixed(1)}B`;
+      if (num >= 1e12) return `${+(num / 1e12).toFixed(1)}T`;
+    },
+  },
 };
 </script>
 
@@ -233,4 +254,10 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
+
+
+/*! CSS Used from: Embedded */
+.icon-metrics{width:36px;height:36px;display:inline-block;color: rgba( 0, 89, 173);}
+
+
 </style>
