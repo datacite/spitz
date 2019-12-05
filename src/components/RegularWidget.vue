@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-4">
         <div class="row">
-          <div class="col-2 ">
-            <v-badge dark class="align-self-center">
+          <div>
+            <v-badge class="align-self-center">
               <template v-slot:badge v-if="(citations !== '')">
                 {{ formatNumbers(citations) }}
               </template>
@@ -20,8 +20,8 @@
       </div>
       <div class="col-4">
         <div class="row">
-          <div class="col-2">
-            <v-badge dark class="align-self-center">
+          <div>
+            <v-badge class="align-self-center">
               <template v-slot:badge v-if="(views !== '')">
                 {{ formatNumbers(views) }}
               </template>
@@ -37,8 +37,8 @@
       </div>
       <div class="col-4">
         <div class="row">
-          <div class="col-2">
-            <v-badge dark class="align-self-center">
+          <div>
+            <v-badge class="align-self-center">
               <template v-slot:badge v-if="(downloads !== '')">
                 {{ formatNumbers(downloads) }}
               </template>
