@@ -161,4 +161,9 @@ export default {
   stroke:gray;
   fill: gray;
 }
+
+
+  @import url("//unpkg.com/bootstrap/dist/css/bootstrap.min.css");
+
+
 </style>
