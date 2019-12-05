@@ -95,6 +95,14 @@ export default {
       }
       return true;
     },
+    formatNumbers(num) {
+      if (num < 1e3) return num;
+      if (num >= 1e3 && num < 1e6) return `${+(num / 1e3).toFixed(1)}K`;
+      if (num >= 1e6 && num < 1e9) return `${+(num / 1e6).toFixed(1)}M`;
+      if (num >= 1e9 && num < 1e12) return `${+(num / 1e9).toFixed(1)}B`;
+      if (num >= 1e12) return `${+(num / 1e12).toFixed(1)}T`;
+      return num;
+    },
     isLocal() {
       if (this.dataInput == null && typeof this.doi !== 'undefined') {
         return false;
@@ -102,11 +110,11 @@ export default {
       return true;
     },
     grabMetrics(data) {
-      this.views = data.views || '';
-      this.downloads = data.downloads || '';
-      this.citations = data.citations || '';
-      this.crossref = data.crossref || '';
-      this.datacite = data.datacite || '';
+      this.views = this.formatNumbers(data.views) || '';
+      this.downloads = this.formatNumbers(data.downloads) || '';
+      this.citations = this.formatNumbers(data.citations) || '';
+      this.crossref = this.formatNumbers(data.crossref) || '';
+      this.datacite = this.formatNumbers(data.datacite) || '';
     },
     requestMetrics() {
       axios({
