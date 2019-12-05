@@ -6,9 +6,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/**/*.spec.js",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/**/*.spec.js"
   },
   "main": "dist/data-metrics-badge.min.js",
   "files": [
@@ -43,6 +43,7 @@
     "mocha-webpack": "^1.1.0",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
+    "vue-cli-plugin-vuetify": "^2.0.2",
     "vue-svg-loader": "^0.12.0",
     "vue-template-compiler": "^2.6.10",
     "vuetify-loader": "^1.4.3",
