@@ -41,7 +41,7 @@ export default {
       type: String,
       required: false,
       validator(value) {
-        return ['small', 'medium', 'datacite'].indexOf(value) > -1;
+        return ['small', 'medium', 'datacite', 'regular'].indexOf(value) > -1;
       },
       default: 'small',
     },

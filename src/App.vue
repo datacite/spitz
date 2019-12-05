@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 <template>
   <div id="app">
-    <DataMetricsBadge
+    <!-- <DataMetricsBadge
       doi="10.7272/q6g15xs4"
       display="small"
     />
@@ -15,15 +15,21 @@
     <DataMetricsBadge
       doi="10.7272/q6g15xs4"
       display="datacite"
-    />
+    /> -->
     <br>
     <DataMetricsBadge
-      doi="10.7272/q6g15xsd4"
+      doi="10.5438/0012"
       display="regular"
     />
     <br>
 
-    <DataMetricsBadge doi="10.7272/q6g15xs4" />
+        <DataMetricsBadge
+      doi="10.7272/q6g15xs4"
+      display="regular"
+      data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:244324}"
+    />
+
+    <!-- <DataMetricsBadge doi="10.7272/q6g15xs4" />
 
     <br>
 
@@ -44,7 +50,7 @@
       doi=""
       display="small"
       data-input="{&quot;views&quot;: 77, &quot;downloads&quot;:8, &quot;citations&quot;:244324}"
-    />
+    /> -->
   </div>
 </template>
 
