@@ -9,6 +9,7 @@ import citationIcon from '@/assets/citationIcon.svg';
 import smallBadge from '@/assets/smallBadge.svg';
 import mediumBadge from '@/assets/mediumBadge.svg';
 import infoCircleIcon from '@/assets/infoCircleIcon.svg';
+import logo from '@/assets/logo.svg';
 
 export default {
   name: 'BaseWidget',
@@ -19,6 +20,7 @@ export default {
     mediumBadge,
     infoCircleIcon,
     citationIcon,
+    logo,
   },
   props: {
     // eslint-disable-next-line vue/require-default-prop
@@ -124,7 +126,7 @@ export default {
         data: {
           query: `
               {
-                counts: dataset(id: "${this.doi}") {
+                counts: creativeWork(id: "${this.doi}") {
                     id
                     views: viewCount
                     downloads: downloadCount
