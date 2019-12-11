@@ -5,14 +5,17 @@
         <div class="row">
           <div>
             <v-badge class="align-self-center">
-              <template v-slot:badge v-if="(citations !== '')">
+              <template
+                v-if="(['', '0',0].includes(citations) == false)"
+                v-slot:badge
+              >
                 {{ formatNumbers(citations) }}
               </template>
               <!-- <v-icon>
                 mdi-format-quote-close
               </v-icon> -->
               <a :href="link + '#citations-tab'">
-                <citationIcon :class="(citations !== '') ? activeClass : inactiveClass" />
+                <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
               </a>
             </v-badge>
           </div>
@@ -22,14 +25,17 @@
         <div class="row">
           <div>
             <v-badge class="align-self-center">
-              <template v-slot:badge v-if="(views !== '')">
+              <template
+                v-if="['', '0',0].includes(views) == false"
+                v-slot:badge
+              >
                 {{ formatNumbers(views) }}
               </template>
               <!-- <v-icon>
                 mdi-eye-outline
               </v-icon> -->
               <a :href="link + '#citations-tab'">
-                <viewIcon :class="(views !== '') ? activeClass : inactiveClass" />
+                <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
               </a>
             </v-badge>
           </div>
@@ -39,14 +45,17 @@
         <div class="row">
           <div>
             <v-badge class="align-self-center">
-              <template v-slot:badge v-if="(downloads !== '')">
+              <template
+                v-if="['', '0',0].includes(downloads) == false"
+                v-slot:badge
+              >
                 {{ formatNumbers(downloads) }}
               </template>
               <!-- <v-icon>
                 mdi-download
               </v-icon> -->
               <a :href="link + '#downloads-tab'">
-                <downloadIcon :class="(downloads !== '') ? activeClass : inactiveClass" />
+                <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
               </a>
             </v-badge>
           </div>
@@ -72,20 +81,6 @@ export default {
       inactiveClass: 'icon-metrics-empty',
     };
   },
-  // computed: {
-  //   hasCounts(){
-  //     return
-  //   }
-  // },
-  // methods: {
-  //   hasCounts(num) {
-  //     // eslint-disable-next-line
-  //     console.log(typeof(num));
-  //     // eslint-disable-next-line valid-typeof
-  //     return typeof (num) === String
-  //       ? '.icon-metrics' : '.icon-metrics-empty';
-  //   },
-  // },
 };
 </script>
 
