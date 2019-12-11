@@ -42,6 +42,7 @@
     "mocha": "^6.2.0",
     "mocha-webpack": "^1.1.0",
     "node-sass": "^4.13.0",
+    "null-loader": "^3.0.0",
     "sass": "^1.23.7",
     "sass-loader": "^7.0.0",
     "vue-cli-plugin-vuetify": "^2.0.2",

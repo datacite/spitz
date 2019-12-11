@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   module: {
     rules: [
@@ -11,6 +13,10 @@ module.exports = {
           // Compiles Sass to CSS
           'sass-loader',
         ],
+      },
+      {
+        test: path.resolve(__dirname, 'node_modules/library/polyfill.js'),
+        use: 'null-loader',
       },
     ],
   },

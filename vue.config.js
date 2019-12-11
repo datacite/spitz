@@ -3,6 +3,11 @@ module.exports = {
     proxy: 'https://api.datacite.org/graphql',
   },
   chainWebpack: (config) => {
+    if (process.env.NODE_ENV === 'test') {
+      const sassRule = config.module.rule('sass');
+      sassRule.uses.clear();
+      sassRule.use('null-loader').loader('null-loader');
+    }
     const svgRule = config.module.rule('svg');
 
     svgRule.uses.clear();
