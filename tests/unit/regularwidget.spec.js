@@ -62,6 +62,7 @@ describe('RegularWidget.vue', () => {
         // eslint-disable-next-line
         // console.log(wrapper.findAll('.primary').length);
         expect(wrapper.html()).to.include('icon-metrics');
+        expect(wrapper.html()).to.include('icon-metrics-empty');
         expect(wrapper.findAll('.primary').length).to.eql(1);
         done();
       });
