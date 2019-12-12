@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="container" style="width:500px;" :title="'Metrics for DOI: ' + doi">
     <div class="row">
-      <div class="col-4">
-        <div class="row">
+      <div class="col-2">
+        <div class="row justify-content-center">
           <div>
             <v-badge class="align-self-center">
               <template
@@ -11,18 +11,15 @@
               >
                 {{ formatNumbers(citations) }}
               </template>
-              <!-- <v-icon>
-                mdi-format-quote-close
-              </v-icon> -->
-              <a :href="link + '#citations-tab'">
+              <a :href="link + '#citations-tab'" :title="pluralize(citations,'Citation')">
                 <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
               </a>
             </v-badge>
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="row">
+      <div class="col-2">
+        <div class="row justify-content-center">
           <div>
             <v-badge class="align-self-center">
               <template
@@ -31,18 +28,15 @@
               >
                 {{ formatNumbers(views) }}
               </template>
-              <!-- <v-icon>
-                mdi-eye-outline
-              </v-icon> -->
-              <a :href="link + '#citations-tab'">
+              <a :href="link + '#citations-tab'" :title="pluralize(views,'View')">
                 <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
               </a>
             </v-badge>
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="row">
+      <div class="col-2">
+        <div class="row justify-content-center">
           <div>
             <v-badge class="align-self-center">
               <template
@@ -51,10 +45,7 @@
               >
                 {{ formatNumbers(downloads) }}
               </template>
-              <!-- <v-icon>
-                mdi-download
-              </v-icon> -->
-              <a :href="link + '#downloads-tab'">
+              <a :href="link + '#downloads-tab'" :title="pluralize(downloads,'Download')">
                 <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
               </a>
             </v-badge>
