@@ -1,5 +1,8 @@
 <template>
-  <div class="container" style="width:500px;" :title="'Metrics for DOI: ' + doi">
+  <div
+    class="container"
+    :title="'Metrics for DOI: ' + doi"
+  >
     <div class="row">
       <div class="col-2">
         <div class="row justify-content-center">
@@ -11,7 +14,10 @@
               >
                 {{ formatNumbers(citations) }}
               </template>
-              <a :href="link + '#citations-tab'" :title="pluralize(citations,'Citation')">
+              <a
+                :href="link + '#citations-tab'"
+                :title="pluralize(citations,'Citation')"
+              >
                 <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
               </a>
             </v-badge>
@@ -28,7 +34,10 @@
               >
                 {{ formatNumbers(views) }}
               </template>
-              <a :href="link + '#citations-tab'" :title="pluralize(views,'View')">
+              <a
+                :href="link + '#citations-tab'"
+                :title="pluralize(views,'View')"
+              >
                 <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
               </a>
             </v-badge>
@@ -45,7 +54,10 @@
               >
                 {{ formatNumbers(downloads) }}
               </template>
-              <a :href="link + '#downloads-tab'" :title="pluralize(downloads,'Download')">
+              <a
+                :href="link + '#downloads-tab'"
+                :title="pluralize(downloads,'Download')"
+              >
                 <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
               </a>
             </v-badge>
@@ -139,6 +151,12 @@ export default {
   stroke: rgba(0, 89, 173);
   fill: rgba(0, 89, 173);
 }
+
+.container {
+  width: 500px;
+  padding: 15px 12px 15px 12px;
+}
+
 .icon-metrics-empty {
   width: 46px;
   height: 46px;
