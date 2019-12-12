@@ -98,6 +98,12 @@ export default {
       }
       return true;
     },
+    pluralize(value = 0, label) {
+      if (value === 1) {
+        return `${value.toLocaleString('en-us')} ${label}`;
+      }
+      return `${value.toLocaleString('en-us')} ${label}s`;
+    },
     formatNumbers(num) {
       if (num < 1e3) return num;
       if (num >= 1e3 && num < 1e6) return `${+(num / 1e3).toFixed(1)}K`;
