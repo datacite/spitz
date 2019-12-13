@@ -25,7 +25,7 @@
 
         <DataMetricsBadge
       doi="10.7272/q6g15xs4"
-      display="regular"
+      display="small"
       data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:244324}"
     />
 
