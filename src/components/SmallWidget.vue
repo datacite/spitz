@@ -10,7 +10,9 @@
       <div class="p-2 counts">
         {{ views }}
       </div>
-      <div class="p-2 label">Downloads</div>
+      <div class="p-2 label">
+        Downloads
+      </div>
       <div class="p-2 counts">
         {{ downloads }}
       </div>
@@ -70,4 +72,7 @@ div.small-container {
   width: 400px;
   padding: 5px 3px 5px 3px;
 }
+
+  @import url("//unpkg.com/bootstrap/dist/css/bootstrap.min.css");
+
 </style>
