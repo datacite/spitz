@@ -35,6 +35,7 @@ div.label {
   width: 8%;
   color: white;
   font-size: 2.5vh;
+  font-size: 8px;
 }
 
 div.logo {
@@ -52,6 +53,8 @@ div.counts {
   background-color: white;
   /* line-height: 8px; */
   font-size: 2.5vh;
+  font-size: 8px;
+
 
   display: table;
   width: 8%;
