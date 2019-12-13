@@ -3,69 +3,74 @@
     class="container"
     :title="'Metrics for DOI: ' + doi"
   >
-    <div class="row">
-      <div class="col-2">
-        <div class="row justify-content-center">
-          <div>
-            <v-badge class="align-self-center">
-              <template
-                v-if="(['', '0',0].includes(citations) == false)"
-                v-slot:badge
-              >
-                {{ formatNumbers(citations) }}
-              </template>
-              <a
-                :href="link + '#citations-tab'"
-                :title="pluralize(citations,'Citation')"
-              >
-                <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
-              </a>
-            </v-badge>
+    <div class="d-flex">
+      <div class="row">
+        <div class="p-2">
+          <div class="row justify-content-center">
+            <div>
+              <v-badge class="align-self-center">
+                <template
+                  v-if="(['', '0',0].includes(citations) == false)"
+                  v-slot:badge
+                >
+                  {{ formatNumbers(citations) }}
+                </template>
+                <a
+                  :href="link + '#citations-tab'"
+                  :title="pluralize(citations,'Citation')"
+                >
+                  <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
+                </a>
+              </v-badge>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-2">
-        <div class="row justify-content-center">
-          <div>
-            <v-badge class="align-self-center">
-              <template
-                v-if="['', '0',0].includes(views) == false"
-                v-slot:badge
-              >
-                {{ formatNumbers(views) }}
-              </template>
-              <a
-                :href="link + '#citations-tab'"
-                :title="pluralize(views,'View')"
-              >
-                <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
-              </a>
-            </v-badge>
+        <div class="p-2">
+          <div class="row justify-content-center">
+            <div>
+              <v-badge class="align-self-center">
+                <template
+                  v-if="['', '0',0].includes(views) == false"
+                  v-slot:badge
+                >
+                  {{ formatNumbers(views) }}
+                </template>
+                <a
+                  :href="link + '#citations-tab'"
+                  :title="pluralize(views,'View')"
+                >
+                  <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
+                </a>
+              </v-badge>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-2">
-        <div class="row justify-content-center">
-          <div>
-            <v-badge class="align-self-center">
-              <template
-                v-if="['', '0',0].includes(downloads) == false"
-                v-slot:badge
-              >
-                {{ formatNumbers(downloads) }}
-              </template>
-              <a
-                :href="link + '#downloads-tab'"
-                :title="pluralize(downloads,'Download')"
-              >
-                <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
-              </a>
-            </v-badge>
+        <div class="p-2">
+          <div class="row justify-content-center">
+            <div>
+              <v-badge class="align-self-center">
+                <template
+                  v-if="['', '0',0].includes(downloads) == false"
+                  v-slot:badge
+                >
+                  {{ formatNumbers(downloads) }}
+                </template>
+                <a
+                  :href="link + '#downloads-tab'"
+                  :title="pluralize(downloads,'Download')"
+                >
+                  <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
+                </a>
+              </v-badge>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="row justify-content-end">
+      <logo :class="'svglogo'" />
+    </div>
+</div>
 </template>
 
 <script>
@@ -88,6 +93,20 @@ export default {
 </script>
 
 <style>
+
+div.logo {
+  /* height: auto; */
+  /* display: table; */
+  /* width: 25%; */
+  padding: 0px 0px 0px 0px;
+}
+
+.svglogo {
+  color: #455a64;
+  fill: #455a64;
+  width: 25%;
+    /* padding: .3rem!important; */
+}
 
 .v-badge__badge {
   align-items: center;
@@ -144,8 +163,8 @@ export default {
 
 /*! CSS Used from: Embedded */
 .icon-metrics {
-  width: 46px;
-  height: 46px;
+  width: 55%;
+  height: 55%;
   display: inline-block;
   color: rgba(0, 89, 173);
   stroke: rgba(0, 89, 173);
@@ -153,17 +172,21 @@ export default {
 }
 
 .container {
-  width: 500px;
+  width: 300px;
   padding: 15px 12px 15px 12px;
 }
 
+.p-2 {
+  width: 33%;
+}
+
 .icon-metrics-empty {
-  width: 46px;
-  height: 46px;
+  width: 55%;
+  height: 55%;
   display: inline-block;
-  color: gray;
-  stroke:gray;
-  fill: gray;
+  color: #78909c;
+  stroke:#78909c;
+  fill: #78909c;
 }
 
 
