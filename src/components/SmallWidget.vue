@@ -1,19 +1,19 @@
 <template>
-  <div class="small-container">
+  <div class="small-container" :title="'Metrics for DOI: ' + doi">
     <div class="d-flex">
       <logo :class="'svglogo'" />
       <div class="p-2 label">Citations</div>
-      <div class="p-2 counts">
+      <div class="p-2 counts" :title="pluralize(citations,'Citation')">
         {{ citations }}
       </div>
       <div class="p-2 label">Views</div>
-      <div class="p-2 counts">
+      <div class="p-2 counts" :title="pluralize(views,'View')">
         {{ views }}
       </div>
       <div class="p-2 label">
         Downloads
       </div>
-      <div class="p-2 counts">
+      <div class="p-2 counts" :title="pluralize(downloads,'Download')">
         {{ downloads }}
       </div>
     </div>
