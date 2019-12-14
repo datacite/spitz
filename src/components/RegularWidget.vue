@@ -216,8 +216,9 @@ div.logo {
   align-self: center !important;
 }
 
+
 .container {
-  width: 300px;
+  width: 90%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
