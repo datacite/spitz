@@ -122,7 +122,7 @@ div.logo {
   line-height: normal;
   min-width: 22px;
   padding: 0 4px;
-  position: absolute;
+  position: relative;
   top: -11px;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   background-color: rgba(255, 0, 0) !important;
