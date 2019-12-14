@@ -63,16 +63,39 @@ div.counts {
   /* height: auto; */
 }
 
+
+/* div.small-container {
+  display: table;
+  width: 400px;
+  padding: 5px 3px 5px 3px;
+} */
+.small-container {
+  width: 400px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family:Arial, Helvetica, sans-serif
+}
+
+  /* @import url("//unpkg.com/bootstrap/dist/css/bootstrap.min.css"); */
+
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
 .p-2 {
   padding: .3rem!important;
 }
 
-div.small-container {
-  display: table;
-  width: 400px;
-  padding: 5px 3px 5px 3px;
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 }
-
-  @import url("//unpkg.com/bootstrap/dist/css/bootstrap.min.css");
 
 </style>

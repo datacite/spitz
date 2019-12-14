@@ -171,14 +171,14 @@ div.logo {
   fill: rgba(0, 89, 173);
 }
 
-.container {
+/* .container {
   width: 300px;
   padding: 15px 12px 15px 12px;
-}
+} */
 
-.p-2 {
+/* .p-2 {
   width: 33%;
-}
+} */
 
 .icon-metrics-empty {
   width: 55%;
@@ -190,7 +190,49 @@ div.logo {
 }
 
 
-  @import url("//unpkg.com/bootstrap/dist/css/bootstrap.min.css");
+  /* @import url("//unpkg.com/bootstrap/dist/css/bootstrap.min.css"); */
 
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.p-2 {
+  padding: .5rem!important;
+  width: 33%;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.align-self-center {
+  -ms-flex-item-align: center !important;
+  align-self: center !important;
+}
+
+.container {
+  width: 300px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* @media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+} */
+
+.justify-content-end {
+  -ms-flex-pack: end !important;
+  justify-content: flex-end !important;
+}
 
 </style>
