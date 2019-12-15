@@ -48,7 +48,6 @@ export default {
 <style scoped>
 div.label {
   background-color: #78909c;
-  /* height: auto; */
   display: table;
   width: 8%;
   color: white;
@@ -74,7 +73,6 @@ div.logo {
 
 div.counts {
   background-color: white;
-  /* line-height: 8px; */
   display: table;
   font-size: 2.5vh;
   font-size: 8px;
@@ -82,14 +80,8 @@ div.counts {
   border-style: solid;
   border-color: #78909c;
   border-width: thin;
-  /* height: auto; */
 }
 
-/* div.small-container {
-  display: table;
-  width: 400px;
-  padding: 5px 3px 5px 3px;
-} */
 .small-container {
   width: 100%;
   min-width: 400px;
@@ -101,8 +93,6 @@ div.counts {
   margin-left: auto;
   font-family: Arial, Helvetica, sans-serif;
 }
-
-/* @import url("//unpkg.com/bootstrap/dist/css/bootstrap.min.css"); */
 
 .d-flex {
   display: -ms-flexbox !important;

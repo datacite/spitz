@@ -165,8 +165,6 @@ export default {
 .icon-metrics {
   width: 17px;
   height: 17px;
-  /* margin-right: 3px; */
-
   display: inline-block;
 }
 

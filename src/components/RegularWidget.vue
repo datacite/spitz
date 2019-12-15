@@ -95,9 +95,6 @@ export default {
 <style>
 
 div.logo {
-  /* height: auto; */
-  /* display: table; */
-  /* width: 25%; */
   padding: 0px 0px 0px 0px;
 }
 
@@ -105,7 +102,6 @@ div.logo {
   color: #455a64;
   fill: #455a64;
   width: 25%;
-    /* padding: .3rem!important; */
 }
 
 .v-badge__badge {
@@ -116,7 +112,6 @@ div.logo {
   flex-direction: row;
   flex-wrap: wrap;
   font-size: 14px;
-  /* font-size: 2vw; */
   font-family: "Helvetica";
   height: 22px;
   justify-content: center;
@@ -162,7 +157,6 @@ div.logo {
   display: none;
 }
 
-/*! CSS Used from: Embedded */
 .icon-metrics {
   width: 55%;
   height: 55%;
@@ -172,15 +166,6 @@ div.logo {
   fill: rgba(0, 89, 173);
 }
 
-/* .container {
-  width: 300px;
-  padding: 15px 12px 15px 12px;
-} */
-
-/* .p-2 {
-  width: 33%;
-} */
-
 .icon-metrics-empty {
   width: 55%;
   height: 55%;
@@ -189,9 +174,6 @@ div.logo {
   stroke:#78909c;
   fill: #78909c;
 }
-
-
-  /* @import url("//unpkg.com/bootstrap/dist/css/bootstrap.min.css"); */
 
 .d-flex {
   display: -ms-flexbox !important;
