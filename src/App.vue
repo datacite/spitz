@@ -17,17 +17,27 @@
       display="datacite"
     /> -->
     <br>
-    <DataMetricsBadge
-      doi="10.5438/0012"
-      display="regular"
-    />
+    <div
+      class="row"
+      style="width:500px;"
+    >
+      <DataMetricsBadge
+        doi="10.5438/0012"
+        display="small"
+        data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:2424}"
+      />
+    </div>
     <br>
-
-        <DataMetricsBadge
-      doi="10.7272/q6g15xs4"
-      display="regular"
-      data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:2424}"
-    />
+    <div
+      class="row"
+      style="width:250px;"
+    >
+      <DataMetricsBadge
+        doi="10.7272/q6g15xs4"
+        display="small"
+        data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:2424}"
+      />
+    </div>
 
     <!-- <DataMetricsBadge doi="10.7272/q6g15xs4" />
 

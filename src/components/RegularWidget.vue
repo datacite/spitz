@@ -8,61 +8,61 @@
         <div class="p-2">
           <!-- <div class="row justify-content-center">
             <div> -->
-              <v-badge class="align-self-center">
-                <template
-                  v-if="(['', '0',0].includes(citations) == false)"
-                  v-slot:badge
-                >
-                  {{ formatNumbers(citations) }}
-                </template>
-                <a
-                  :href="link + '#citations-tab'"
-                  :title="pluralize(citations,'Citation')"
-                >
-                  <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
-                </a>
-              </v-badge>
-            <!-- </div>
+          <v-badge class="align-self-center">
+            <template
+              v-if="(['', '0',0].includes(citations) == false)"
+              v-slot:badge
+            >
+              {{ formatNumbers(citations) }}
+            </template>
+            <a
+              :href="link + '#citations-tab'"
+              :title="pluralize(citations,'Citation')"
+            >
+              <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
+            </a>
+          </v-badge>
+          <!-- </div>
           </div> -->
         </div>
         <div class="p-2">
           <!-- <div class="row justify-content-center">
             <div> -->
-              <v-badge class="align-self-center">
-                <template
-                  v-if="['', '0',0].includes(views) == false"
-                  v-slot:badge
-                >
-                  {{ formatNumbers(views) }}
-                </template>
-                <a
-                  :href="link + '#citations-tab'"
-                  :title="pluralize(views,'View')"
-                >
-                  <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
-                </a>
-              </v-badge>
-            <!-- </div>
+          <v-badge class="align-self-center">
+            <template
+              v-if="['', '0',0].includes(views) == false"
+              v-slot:badge
+            >
+              {{ formatNumbers(views) }}
+            </template>
+            <a
+              :href="link + '#citations-tab'"
+              :title="pluralize(views,'View')"
+            >
+              <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
+            </a>
+          </v-badge>
+          <!-- </div>
           </div> -->
         </div>
         <div class="p-2">
           <!-- <div class="row justify-content-center">
             <div> -->
-              <v-badge class="align-self-center">
-                <template
-                  v-if="['', '0',0].includes(downloads) == false"
-                  v-slot:badge
-                >
-                  {{ formatNumbers(downloads) }}
-                </template>
-                <a
-                  :href="link + '#downloads-tab'"
-                  :title="pluralize(downloads,'Download')"
-                >
-                  <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
-                </a>
-              </v-badge>
-            <!-- </div>
+          <v-badge class="align-self-center">
+            <template
+              v-if="['', '0',0].includes(downloads) == false"
+              v-slot:badge
+            >
+              {{ formatNumbers(downloads) }}
+            </template>
+            <a
+              :href="link + '#downloads-tab'"
+              :title="pluralize(downloads,'Download')"
+            >
+              <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
+            </a>
+          </v-badge>
+          <!-- </div>
           </div> -->
         </div>
       </div>
@@ -70,7 +70,7 @@
     <div class="row justify-content-end">
       <logo :class="'svglogo'" />
     </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -116,6 +116,7 @@ div.logo {
   flex-direction: row;
   flex-wrap: wrap;
   font-size: 14px;
+  /* font-size: 2vw; */
   font-family: "Helvetica";
   height: 22px;
   justify-content: center;
@@ -219,17 +220,19 @@ div.logo {
 
 .container {
   width: 90%;
+  min-width: 350px;
+  max-width: 500px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
 
-/* @media (min-width: 576px) {
+@media (min-width: 350px) {
   .container {
-    max-width: 540px;
+    max-width: 500px;
   }
-} */
+}
 
 .justify-content-end {
   -ms-flex-pack: end !important;
