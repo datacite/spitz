@@ -12,7 +12,7 @@
         class="p-2 counts"
         :title="pluralize(citations, 'Citation')"
       >
-        {{ citations }}
+        {{ formatNumbers(citations) }}
       </div>
       <div class="p-2 label">
         Views
@@ -21,7 +21,7 @@
         class="p-2 counts"
         :title="pluralize(views, 'View')"
       >
-        {{ views }}
+        {{ formatNumbers(views) }}
       </div>
       <div class="p-2 label">
         Downloads
@@ -30,7 +30,7 @@
         class="p-2 counts"
         :title="pluralize(downloads, 'Download')"
       >
-        {{ downloads }}
+        {{ formatNumbers(downloads) }}
       </div>
     </div>
   </div>

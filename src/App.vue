@@ -35,7 +35,7 @@
       <DataMetricsBadge
         doi="10.7272/q6g15xs4"
         display="small"
-        data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:2424}"
+        data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:400000}"
       />
     </div>
 
