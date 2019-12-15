@@ -20,6 +20,14 @@ The *Data Metrics Badge* is a an easy way to embed usage and citations metrics f
 | Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions
 
 
+
+One will need to include the web-components-loader for Edge and IE compatibility.
+
+```html
+  <script src="https://unpkg.com/browse/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
+```
+
+
 ## Installation and Usage
 
 Getting set up with a Data Metrics Badge is a straightforward process – just add the following code to the HTML of your website wherever you want the Data Metrics Badge to appear:
