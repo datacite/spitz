@@ -118,7 +118,7 @@ div.logo {
   line-height: normal;
   min-width: 22px;
   padding: 0 4px;
-  position: relative;
+  position: absolute;
   top: -11px;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   background-color: rgba(255, 0, 0) !important;
@@ -158,8 +158,8 @@ div.logo {
 }
 
 .icon-metrics {
-  width: 55%;
-  height: 55%;
+  width: 80%;
+  height: 80%;
   display: inline-block;
   color: rgba(0, 89, 173);
   stroke: rgba(0, 89, 173);
@@ -167,8 +167,8 @@ div.logo {
 }
 
 .icon-metrics-empty {
-  width: 55%;
-  height: 55%;
+  width: 80%;
+  height: 80%;
   display: inline-block;
   color: #78909c;
   stroke:#78909c;
@@ -183,6 +183,7 @@ div.logo {
 .p-2 {
   padding: .5rem!important;
   width: 33%;
+  position: relative;
 }
 
 .row {

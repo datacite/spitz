@@ -30,11 +30,11 @@
     <br>
     <div
       class="row"
-      style="width:250px;"
+      style="width:10px;"
     >
       <DataMetricsBadge
         doi="10.7272/q6g15xs4"
-        display="small"
+        display="regular"
         data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:400000}"
       />
     </div>
