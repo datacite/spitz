@@ -56,6 +56,7 @@ div.label {
   border-style: solid;
   border-color: #78909c;
   border-width: thin;
+  text-align: center;
 }
 
 div.logo {
@@ -80,6 +81,7 @@ div.counts {
   border-style: solid;
   border-color: #78909c;
   border-width: thin;
+  text-align: center;
 }
 
 .small-container {
