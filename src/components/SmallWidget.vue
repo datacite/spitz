@@ -14,6 +14,7 @@
       >
         {{ formatNumbers(citations) }}
       </div>
+      <div class="p-2 span" />
       <div class="p-2 label">
         Views
       </div>
@@ -23,6 +24,7 @@
       >
         {{ formatNumbers(views) }}
       </div>
+      <div class="p-2 span" />
       <div class="p-2 label">
         Downloads
       </div>
@@ -32,6 +34,7 @@
       >
         {{ formatNumbers(downloads) }}
       </div>
+      <div class="p-2 span" />
     </div>
   </div>
 </template>
@@ -82,6 +85,13 @@ div.counts {
   border-color: #78909c;
   border-width: thin;
   text-align: center;
+}
+
+div.span {
+  background-color: white;
+  display: table;
+  font-size: 2.5vh;
+  width: 2%;
 }
 
 .small-container {
