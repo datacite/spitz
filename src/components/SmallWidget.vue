@@ -80,7 +80,7 @@ div.counts {
   display: table;
   font-size: 2.5vh;
   font-size: 8px;
-  width: 8%;
+  width: 6%;
   border-style: solid;
   border-color: #78909c;
   border-width: thin;
