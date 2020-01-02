@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div v-if="doi">
+    <div
+      v-if="(doi && errored != true)"
+    >
       <div v-if="display == 'small'">
         <SmallWidget
           :doi="doi"
