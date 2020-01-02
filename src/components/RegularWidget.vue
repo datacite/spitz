@@ -6,8 +6,6 @@
     <div class="d-flex">
       <div class="row">
         <div class="p-2">
-          <!-- <div class="row justify-content-center">
-            <div> -->
           <v-badge class="align-self-center">
             <template
               v-if="(['', '0',0].includes(citations) == false)"
@@ -22,12 +20,8 @@
               <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
             </a>
           </v-badge>
-          <!-- </div>
-          </div> -->
         </div>
         <div class="p-2">
-          <!-- <div class="row justify-content-center">
-            <div> -->
           <v-badge class="align-self-center">
             <template
               v-if="['', '0',0].includes(views) == false"
@@ -42,12 +36,8 @@
               <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
             </a>
           </v-badge>
-          <!-- </div>
-          </div> -->
         </div>
         <div class="p-2">
-          <!-- <div class="row justify-content-center">
-            <div> -->
           <v-badge class="align-self-center">
             <template
               v-if="['', '0',0].includes(downloads) == false"
@@ -62,8 +52,6 @@
               <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
             </a>
           </v-badge>
-          <!-- </div>
-          </div> -->
         </div>
       </div>
     </div>
