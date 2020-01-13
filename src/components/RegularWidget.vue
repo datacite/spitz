@@ -1,63 +1,78 @@
 <template>
   <div
     class="container"
-    :title="'Metrics for DOI: ' + doi"
   >
-    <div class="d-flex">
-      <div class="row">
-        <div class="p-2">
-          <v-badge class="align-self-center">
-            <template
-              v-if="(['', '0',0].includes(citations) == false)"
-              v-slot:badge
-            >
-              {{ formatNumbers(citations) }}
-            </template>
-            <a
-              :href="link + '#citations-tab'"
-              :title="pluralize(citations,'Citation')"
-            >
+    <a
+      :href="link"
+    >
+      <div class="d-flex">
+        <div class="row">
+          <div class="p-2">
+            <v-badge class="align-self-center">
+              <template
+                v-if="(['', '0',0].includes(citations) == false)"
+                v-slot:badge
+              >
+                {{ formatNumbers(citations) }}
+              </template>
+              <!-- <a
+                :href="link + '#citations-tab'"
+                :title="pluralize(citations,'Citation')"
+              > -->
               <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
-            </a>
-          </v-badge>
-        </div>
-        <div class="p-2">
-          <v-badge class="align-self-center">
-            <template
-              v-if="['', '0',0].includes(views) == false"
-              v-slot:badge
-            >
-              {{ formatNumbers(views) }}
-            </template>
-            <a
-              :href="link + '#citations-tab'"
-              :title="pluralize(views,'View')"
-            >
+              <!-- </a> -->
+            </v-badge>
+          </div>
+          <div class="p-2">
+            <v-badge class="align-self-center">
+              <template
+                v-if="['', '0',0].includes(views) == false"
+                v-slot:badge
+              >
+                {{ formatNumbers(views) }}
+              </template>
+              <!-- <a
+                :href="link + '#citations-tab'"
+                :title="pluralize(views,'View')"
+              > -->
               <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
-            </a>
-          </v-badge>
-        </div>
-        <div class="p-2">
-          <v-badge class="align-self-center">
-            <template
-              v-if="['', '0',0].includes(downloads) == false"
-              v-slot:badge
-            >
-              {{ formatNumbers(downloads) }}
-            </template>
-            <a
-              :href="link + '#downloads-tab'"
-              :title="pluralize(downloads,'Download')"
-            >
+
+              <!-- </a> -->
+            </v-badge>
+          </div>
+          <div class="p-2">
+            <v-badge class="align-self-center">
+              <template
+                v-if="['', '0',0].includes(downloads) == false"
+                v-slot:badge
+              >
+                {{ formatNumbers(downloads) }}
+              </template>
+              <!-- <a
+                :href="link + '#downloads-tab'"
+                :title="pluralize(downloads,'Download')"
+              > -->
               <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
-            </a>
-          </v-badge>
+              <!-- </a> -->
+            </v-badge>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row justify-content-end">
-      <logo :class="'svglogo'" />
-    </div>
+      <div class="row">
+        <div class="p-2">
+          <p :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass">Citations</p>
+        </div>
+        <div class="p-2">
+          <p :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass">Views</p>
+        </div>
+        <div class="p-2">
+          <p :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass">Downloads</p>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <logo :class="'svglogo'" />
+      </div>
+    </a>
   </div>
 </template>
 
@@ -94,20 +109,21 @@ div.logo {
 
 .v-badge__badge {
   align-items: center;
-  border-radius: 11px;
+  border-radius: 45px;
   color: #ffffff;
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
-  font-size: 14px;
+  font-size: 23px;
   font-family: "Helvetica";
-  height: 22px;
+  height: 45px;
   justify-content: center;
   line-height: normal;
-  min-width: 22px;
+  min-width: 45px;
   padding: 0 4px;
   position: absolute;
   top: -11px;
+  right: -27px;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   background-color: rgba(255, 0, 0) !important;
   border-color: rgba(255, 0, 0) !important;
@@ -188,20 +204,19 @@ div.logo {
   align-self: center !important;
 }
 
-
 .container {
   width: 90%;
   min-width: 350px;
-  max-width: 500px;
+  max-width: 350px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
 
-@media (min-width: 350px) {
+@media (min-width: 250px) {
   .container {
-    max-width: 500px;
+    max-width: 350px;
   }
 }
 

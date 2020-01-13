@@ -16,10 +16,21 @@
       doi="10.7272/q6g15xs4"
       display="datacite"
     /> -->
-    <br>
+  <br>
     <div
       class="row"
       style="width:500px;"
+    >
+      <DataMetricsBadge
+        doi="10.5438/0012"
+        display="small"
+        data-input="{&quot;views&quot;: 0, &quot;downloads&quot;:262, &quot;citations&quot;:2424}"
+      />
+    </div>
+    <br>
+    <div
+      class="row"
+      style="width:350px;"
     >
       <DataMetricsBadge
         doi="10.5438/0012"
@@ -36,6 +47,11 @@
         doi="10.7272/q6g15xs4"
         display="regular"
         data-input="{&quot;views&quot;: 4, &quot;downloads&quot;:262, &quot;citations&quot;:400000}"
+      />
+
+      <DataMetricsBadge
+        doi="10.17639/nott.6751"
+        display="regular"
       />
     </div>
 

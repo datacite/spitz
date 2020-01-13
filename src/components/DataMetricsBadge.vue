@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div
+    :title="'Metrics for DOI: ' + doi"
+  >
     <div
       v-if="(doi && errored != true)"
     >
