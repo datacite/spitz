@@ -185,8 +185,6 @@ div.logo {
 }
 
 .p-2 {
-  width: 80%;
-  height: 80%;
   padding: .5rem!important;
   width: 33%;
   position: relative;
@@ -204,7 +202,6 @@ div.logo {
 .align-self-center {
   -ms-flex-item-align: center !important;
   align-self: center !important;
-  position: relative;
 }
 
 .container {
