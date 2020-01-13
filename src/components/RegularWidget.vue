@@ -59,13 +59,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="p-2">
+        <div class="p-2 align-self-center">
           <p :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass">Citations</p>
         </div>
-        <div class="p-2">
+        <div class="p-2 align-self-center">
           <p :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass">Views</p>
         </div>
-        <div class="p-2">
+        <div class="p-2 align-self-center">
           <p :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass">Downloads</p>
         </div>
       </div>
@@ -123,7 +123,7 @@ div.logo {
   padding: 0 4px;
   position: absolute;
   top: -11px;
-  right: -27px;
+  right: -17px;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   background-color: rgba(255, 0, 0) !important;
   border-color: rgba(255, 0, 0) !important;
@@ -185,6 +185,8 @@ div.logo {
 }
 
 .p-2 {
+  width: 80%;
+  height: 80%;
   padding: .5rem!important;
   width: 33%;
   position: relative;
@@ -202,6 +204,7 @@ div.logo {
 .align-self-center {
   -ms-flex-item-align: center !important;
   align-self: center !important;
+  position: relative;
 }
 
 .container {
