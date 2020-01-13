@@ -75,7 +75,7 @@ div.label {
 }
 
 div.logo {
-  min-width: 80px;
+  min-width: 100px;
   padding: 0px 0px 0px 0px;
 }
 
@@ -84,7 +84,7 @@ div.logo {
   fill: #455a64;
   display: table;
   width: 20%;
-  min-width: 80px;
+  min-width: 100px;
 }
 
 div.counts {
