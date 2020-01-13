@@ -59,14 +59,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="p-2 align-self-center">
-          <p :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass">Citations</p>
+        <div class="p-2">
+          <p :class="(['', '0',0].includes(citations) == false) ? labelActiveClass : labelInactiveClass">Citations</p>
         </div>
-        <div class="p-2 align-self-center">
-          <p :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass">Views</p>
+        <div class="p-2">
+          <p :class="(['', '0',0].includes(views) == false) ? labelActiveClass : labelInactiveClass">Views</p>
         </div>
-        <div class="p-2 align-self-center">
-          <p :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass">Downloads</p>
+        <div class="p-2">
+          <p :class="(['', '0',0].includes(downloads) == false) ? labelActiveClass : labelInactiveClass">Downloads</p>
         </div>
       </div>
       <div class="row justify-content-end">
@@ -90,6 +90,8 @@ export default {
     return {
       activeClass: 'icon-metrics',
       inactiveClass: 'icon-metrics-empty',
+      labelActiveClass: 'metrics-label',
+      labelInactiveClass: 'metrics-label-empty',
     };
   },
 };
@@ -177,6 +179,16 @@ div.logo {
   color: #78909c;
   stroke:#78909c;
   fill: #78909c;
+}
+
+.metrics-label{
+  text-align: center;
+  color:rgba(0, 89, 173);
+}
+
+.metrics-label-empty{
+  text-align: center;
+  color: #78909c;
 }
 
 .d-flex {
