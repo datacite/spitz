@@ -1,6 +1,6 @@
 {
   "name": "data-metrics-badge",
-  "version": "0.4.30",
+  "version": "0.4.31",
   "private": false,
   "author": "Kristian Garza <kgarza@datacite.org>",
   "scripts": {
