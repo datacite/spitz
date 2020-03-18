@@ -18,27 +18,32 @@
         </div>
         <div class="p-2 span" />
 
-        <div :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass">
-          Views
-        </div>
         <div
-          class="p-2 counts"
-          :title="pluralize(views, 'View')"
+          v-if="parseInt(views)+parseInt(downloads) > 0"
+          class="d-flex"
         >
-          {{ formatNumbers((['', '0',0].includes(views) == false) ? views : '&nbsp;&nbsp;' ) }}
-        </div>
-        <div class="p-2 span" />
+          <div :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass">
+            Views
+          </div>
+          <div
+            class="p-2 counts"
+            :title="pluralize(views, 'View')"
+          >
+            {{ formatNumbers((['', '0',0].includes(views) == false) ? views : '&nbsp;&nbsp;' ) }}
+          </div>
+          <div class="p-2 span" />
 
-        <div :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass">
-          Downloads
+          <div :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass">
+            Downloads
+          </div>
+          <div
+            class="p-2 counts"
+            :title="pluralize(downloads, 'Download')"
+          >
+            {{ formatNumbers((['', '0',0].includes(downloads) == false) ? downloads : '&nbsp;&nbsp;' ) }}
+          </div>
+          <div class="p-2 span" />
         </div>
-        <div
-          class="p-2 counts"
-          :title="pluralize(downloads, 'Download')"
-        >
-          {{ formatNumbers((['', '0',0].includes(downloads) == false) ? downloads : '&nbsp;&nbsp;' ) }}
-        </div>
-        <div class="p-2 span" />
       </div>
     </a>
   </div>
