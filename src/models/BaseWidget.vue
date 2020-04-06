@@ -132,7 +132,7 @@ export default {
         data: {
           query: `
               {
-                counts: creativeWork(id: "${this.doi}") {
+                counts: work(id: "${this.doi}") {
                     id
                     views: viewCount
                     downloads: downloadCount
