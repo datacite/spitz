@@ -1,16 +1,12 @@
 <template>
-  <div
-    class="container"
-  >
-    <a
-      :href="link"
-    >
+  <div class="container">
+    <a :href="link">
       <div class="d-flex">
         <div class="row">
           <div class="p-2">
             <v-badge class="align-self-center">
               <template
-                v-if="(['', '0',0].includes(citations) == false)"
+                v-if="['', '0', 0].includes(citations) == false"
                 v-slot:badge
               >
                 {{ formatNumbers(citations) }}
@@ -19,14 +15,20 @@
                 :href="link + '#citations-tab'"
                 :title="pluralize(citations,'Citation')"
               > -->
-              <citationIcon :class="(['', '0',0].includes(citations) == false) ? activeClass : inactiveClass" />
+              <citationIcon
+                :class="
+                  ['', '0', 0].includes(citations) == false
+                    ? activeClass
+                    : inactiveClass
+                "
+              />
               <!-- </a> -->
             </v-badge>
           </div>
           <div class="p-2">
             <v-badge class="align-self-center">
               <template
-                v-if="['', '0',0].includes(views) == false"
+                v-if="['', '0', 0].includes(views) == false"
                 v-slot:badge
               >
                 {{ formatNumbers(views) }}
@@ -35,7 +37,13 @@
                 :href="link + '#citations-tab'"
                 :title="pluralize(views,'View')"
               > -->
-              <viewIcon :class="(['', '0',0].includes(views) == false) ? activeClass : inactiveClass" />
+              <viewIcon
+                :class="
+                  ['', '0', 0].includes(views) == false
+                    ? activeClass
+                    : inactiveClass
+                "
+              />
 
               <!-- </a> -->
             </v-badge>
@@ -43,7 +51,7 @@
           <div class="p-2">
             <v-badge class="align-self-center">
               <template
-                v-if="['', '0',0].includes(downloads) == false"
+                v-if="['', '0', 0].includes(downloads) == false"
                 v-slot:badge
               >
                 {{ formatNumbers(downloads) }}
@@ -52,7 +60,13 @@
                 :href="link + '#downloads-tab'"
                 :title="pluralize(downloads,'Download')"
               > -->
-              <downloadIcon :class="(['', '0',0].includes(downloads) == false) ? activeClass : inactiveClass" />
+              <downloadIcon
+                :class="
+                  ['', '0', 0].includes(downloads) == false
+                    ? activeClass
+                    : inactiveClass
+                "
+              />
               <!-- </a> -->
             </v-badge>
           </div>
@@ -60,13 +74,37 @@
       </div>
       <div class="row">
         <div class="p-2">
-          <p :class="(['', '0',0].includes(citations) == false) ? labelActiveClass : labelInactiveClass">Citations</p>
+          <p
+            :class="
+              ['', '0', 0].includes(citations) == false
+                ? labelActiveClass
+                : labelInactiveClass
+            "
+          >
+            Citations
+          </p>
         </div>
         <div class="p-2">
-          <p :class="(['', '0',0].includes(views) == false) ? labelActiveClass : labelInactiveClass">Views</p>
+          <p
+            :class="
+              ['', '0', 0].includes(views) == false
+                ? labelActiveClass
+                : labelInactiveClass
+            "
+          >
+            Views
+          </p>
         </div>
         <div class="p-2">
-          <p :class="(['', '0',0].includes(downloads) == false) ? labelActiveClass : labelInactiveClass">Downloads</p>
+          <p
+            :class="
+              ['', '0', 0].includes(downloads) == false
+                ? labelActiveClass
+                : labelInactiveClass
+            "
+          >
+            Downloads
+          </p>
         </div>
       </div>
       <div class="row justify-content-end">
@@ -98,7 +136,6 @@ export default {
 </script>
 
 <style>
-
 div.logo {
   padding: 0px 0px 0px 0px;
 }
@@ -177,16 +214,16 @@ div.logo {
   height: 80%;
   display: inline-block;
   color: #78909c;
-  stroke:#78909c;
+  stroke: #78909c;
   fill: #78909c;
 }
 
-.metrics-label{
+.metrics-label {
   text-align: center;
-  color:rgba(0, 89, 173);
+  color: rgba(0, 89, 173);
 }
 
-.metrics-label-empty{
+.metrics-label-empty {
   text-align: center;
   color: #78909c;
 }
@@ -197,7 +234,7 @@ div.logo {
 }
 
 .p-2 {
-  padding: .5rem!important;
+  padding: 0.5rem !important;
   width: 33%;
   position: relative;
 }
@@ -236,5 +273,4 @@ div.logo {
   -ms-flex-pack: end !important;
   justify-content: flex-end !important;
 }
-
 </style>

@@ -16,7 +16,7 @@
       doi="10.7272/q6g15xs4"
       display="datacite"
     /> -->
-  <br>
+    <br>
     <div
       class="row"
       style="width:500px;"

@@ -14,7 +14,9 @@
           class="p-2 counts"
           :title="pluralize(citations, 'Citation')"
         >
-          {{ formatNumbers((['', '0',0].includes(citations) == false) ? citations : '&nbsp;&nbsp;' ) }}
+          {{ formatNumbers((['', '0',0].includes(citations) == false)
+            ? citations
+            : '&nbsp;&nbsp;' ) }}
         </div>
         <div class="p-2 span" />
 
@@ -40,7 +42,9 @@
             class="p-2 counts"
             :title="pluralize(downloads, 'Download')"
           >
-            {{ formatNumbers((['', '0',0].includes(downloads) == false) ? downloads : '&nbsp;&nbsp;' ) }}
+            {{ formatNumbers((['', '0',0].includes(downloads) == false)
+              ? downloads
+              : '&nbsp;&nbsp;' ) }}
           </div>
           <div class="p-2 span" />
         </div>
