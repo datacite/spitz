@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     link() {
-      return `https://search.datacite.org/works/${this.doi}`;
+      return `https://commons.datacite.org/doi.org/${this.doi}`;
     },
     url() {
       return `${APIURL}/graphql`;
