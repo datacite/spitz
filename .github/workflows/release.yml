@@ -1,0 +1,76 @@
+name: Release
+on:
+  release:
+    types: [published]
+jobs:
+  test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Install Dependencies
+        run:  |
+          yarn install
+
+      - name: Run Test Suite
+        run: |
+          yarn test:unit tests/
+
+      - name: Test Package Build
+        run: |
+          yarn build --target wc --name data-metrics-badge 'src/components/DataMetricsBadge.vue'
+
+  publish:
+    name: Release
+    needs: [test]
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Install Dependencies
+        run: |
+          yarn install
+
+      - name: Build Package
+        run: |
+          yarn build --target wc --name data-metrics-badge 'src/components/DataMetricsBadge.vue'
+
+      - name: Set version
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          npm version ${{ github.event.release.tag_name }}
+
+          git remote add gh-origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git push gh-origin HEAD:master --tags
+
+      - name: Publish
+        run: |
+          npm set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
+          npm publish
+
+      - name: Notify Slack
+        uses: edge/simple-slack-notify@master
+        with:
+          channel: '#ops'
+          color: 'good'
+          text: 'A new version of the data-metrics-badge has been published to npmjs.com.'
+          failure_text: '${env.GITHUB_WORKFLOW} (${env.GITHUB_RUN_NUMBER}) build failed'
+          fields: |
+            [{ "title": "Commit message", "value": "${{ steps.extract_variables.outputs.MESSAGE }}" },
+             { "title": "Committed by", "value": "<https://github.com/${{ github.repository }}/commits?author=${{ github.actor }}|${{ github.actor }}>", "short": true },
+             { "title": "Commit SHA", "value": "<https://github.com/${{ github.repository }}/commit/${{ steps.extract_variables.outputs.GIT_SHA }}|${{ steps.extract_variables.outputs.GIT_SHA_SHORT }}>", "short": true },
+             { "title": "Repository", "value": "<https://github.com/${{ github.repository }}|${{ github.repository }}>", "short": true },
+             { "title": "Branch", "value": "<https://github.com/${{ github.repository }}/tree/${{ steps.extract_variables.outputs.BRANCH }}|${{ steps.extract_variables.outputs.BRANCH }}>", "short": true }]
