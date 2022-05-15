@@ -2,15 +2,55 @@ name: Release
 on:
   release:
     types: [published]
+
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 jobs:
-  test:
-    name: Build and Test
+  version-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Version Check Instructions
+        run: |
+          MY_STRING=$(cat << EOF
+
+          If version checking fails, you must do one of the following
+            1) Manually invoke the 'bump' github workflow to set the package.version to the desired release tag value
+            2) Edit package.json to set the version field to the release tag, and then commit that change.
+          If version checking passes, you will see "OK! VERSION CHECK SUCCEEDED!!!"
+          EOF
+          )
+          echo "::set-output name=content::$MY_STRING"
+
+      - name: match-tag-to-package-version
+        id: match-tag-to-package-version
+        uses: geritol/match-tag-to-package-version@0.2.0
+        if: always()
+
+      - name: Version Check Results
+        run: |
+          MY_STRING=$(cat << EOF
+
+            OK! VERSION CHECK SUCCEEDED!!!
+          EOF
+          )
+          echo "::set-output name=content::$MY_STRING"
+
+  test:
+    name: Build and Test
+    needs: [version-check]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10, 12]
+    steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version:  ${{ matrix.node-version }}
 
       - name: Install Dependencies
         run:  |
@@ -32,12 +72,8 @@ jobs:
     name: Release
     needs: [test]
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
@@ -50,31 +86,7 @@ jobs:
         run: |
           yarn build --target wc --name data-metrics-badge 'src/components/DataMetricsBadge.vue'
 
-      - name: Set version
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-
-          npm version ${{ github.event.release.tag_name }}
-
-          git remote add gh-origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git push gh-origin HEAD:master --tags
-
       - name: Publish
         run: |
           npm set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
           npm publish
-
-      - name: Notify Slack
-        uses: edge/simple-slack-notify@master
-        with:
-          channel: '#ops'
-          color: 'good'
-          text: 'A new version of the data-metrics-badge has been published to npmjs.com.'
-          failure_text: '${env.GITHUB_WORKFLOW} (${env.GITHUB_RUN_NUMBER}) build failed'
-          fields: |
-            [{ "title": "Commit message", "value": "${{ steps.extract_variables.outputs.MESSAGE }}" },
-             { "title": "Committed by", "value": "<https://github.com/${{ github.repository }}/commits?author=${{ github.actor }}|${{ github.actor }}>", "short": true },
-             { "title": "Commit SHA", "value": "<https://github.com/${{ github.repository }}/commit/${{ steps.extract_variables.outputs.GIT_SHA }}|${{ steps.extract_variables.outputs.GIT_SHA_SHORT }}>", "short": true },
-             { "title": "Repository", "value": "<https://github.com/${{ github.repository }}|${{ github.repository }}>", "short": true },
-             { "title": "Branch", "value": "<https://github.com/${{ github.repository }}/tree/${{ steps.extract_variables.outputs.BRANCH }}|${{ steps.extract_variables.outputs.BRANCH }}>", "short": true }]
