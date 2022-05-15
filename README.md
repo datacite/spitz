@@ -76,6 +76,9 @@ yarn test:unit tests/
 npm run lint
 ```
 
+### Publishing to NPMJS.com
+
+After merging changes via a pull request, manually run the bump-version github action, using the next version number after the last released version. The bump-version action will set the correct version in package.json, commit it, and create a release tag.  Then, create a release using that tag.
 
 ## Contributing
 

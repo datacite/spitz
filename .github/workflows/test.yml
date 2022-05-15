@@ -1,9 +1,9 @@
-name: Pull Request
+name: Test
 on:
-  pull_request:
+  push:
     branches:
-      - master
-
+      - "master"
+  workflow_dispatch:
 jobs:
   build:
     name: Build and Test
