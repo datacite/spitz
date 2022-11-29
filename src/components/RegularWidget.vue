@@ -237,6 +237,7 @@ div.logo {
   padding: 0.5rem !important;
   width: 33%;
   position: relative;
+  box-sizing: border-box;
 }
 
 .row {
