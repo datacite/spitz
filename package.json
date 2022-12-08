@@ -21,7 +21,7 @@
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-vega": "^1.0.0-alpha.13",
-    "vuetify": "^2.1.12"
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
